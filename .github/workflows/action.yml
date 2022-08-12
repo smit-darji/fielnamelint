@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: .dotfiles
+      - name: file name
         uses: batista/lint-filenames@v1
         with:
           path: './demofolder'
