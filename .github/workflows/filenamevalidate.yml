@@ -13,10 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: .json files
+      - name: .dotfiles
         uses: ./
         with:
-          path: './demofolder'
-          pattern: "\\.json$"
+          path: './__tests__/test-files/03-dot-files'
+          pattern: "^\\..+$"
 
   
