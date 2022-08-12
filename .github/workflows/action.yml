@@ -16,6 +16,6 @@ jobs:
         uses: batista/lint-filenames@v1
         with:
           path: './demofolder'
-          pattern: "^\\..+$"
+          pattern: "\\.json$"
 
   
