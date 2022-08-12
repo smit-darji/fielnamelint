@@ -16,7 +16,7 @@ jobs:
       - name: .json files
         uses: ./
         with:
-          path: ./demofolder
+          path: './demofolder'
           pattern: "\\.json$"
 
   
