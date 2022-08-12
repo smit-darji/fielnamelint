@@ -17,5 +17,4 @@ jobs:
         with:
           path: './demofolder'
           pattern: "^[a-z0-9.-]*$"
-
   
