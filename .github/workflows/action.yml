@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@latest
 
       - name: .dotfiles
-        uses: ./
+        uses: batista/lint-filenames@v1
         with:
           path: './demofolder'
           pattern: "^\\..+$"
