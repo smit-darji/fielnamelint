@@ -27,6 +27,6 @@ jobs:
         name: Validating my-folder filenames
         with:
          path: './demofolder'
-         pattern: '/^\d+\.jpg$/'
+         pattern: '^.+\\..+$'
 
   
