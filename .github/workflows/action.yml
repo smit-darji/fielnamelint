@@ -15,7 +15,7 @@ jobs:
       - name: .dotfiles
         uses: ./
         with:
-          path: './__tests__/test-files/03-dot-files'
+          path: './demofolder'
           pattern: "^\\..+$"
 
   
