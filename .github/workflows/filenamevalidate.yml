@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout Default: ${{ github.repository }}
+        uses: actions/checkout 
+        Default: ${{ github.repository }}
 
       - name: .json files
         uses: ./
