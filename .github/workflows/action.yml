@@ -27,7 +27,7 @@ jobs:
           string: 
           split-by: '/'
       - run: | 
-          echo "${{ steps.folder_name_list.outputs._1}}"
+          echo "${{ steps.split.outputs._1}}"
 
 
 
