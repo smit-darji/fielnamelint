@@ -36,7 +36,6 @@ jobs:
     - name: Print modified files
       run: |
         echo '::set-output name=modifi_files::${{ steps.modified_files_list.outputs.stringList }}'
-        echo ${{steps.modified_files.outputs.modifi_files}}
 
 
 
