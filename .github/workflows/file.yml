@@ -16,4 +16,4 @@ jobs:
         uses: batista/lint-filenames@v1
         with:
           path: './demofolder'
-          pattern: /[0-9]{4}_[A-Z0-9_]\.([a-zA-Z])*$
+          pattern: /[0-9]{4}_[A-Z0-9_][.][A-Za-z]*$
