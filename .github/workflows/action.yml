@@ -23,7 +23,7 @@ jobs:
       
       - name: Get Folder name
         run: |
-          ARRAY+= (cut -d "/"  -f1  test.txt )
+          cut -d "/"  -f1  test.txt 
           cut -d "/"  -f1  test.txt >> folder.txt
 
       - name: store  folder name
