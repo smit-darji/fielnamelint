@@ -13,7 +13,7 @@ jobs:
 
       - name: Set listFiles output variable
         id: set-py-files # Give it an id to handle to get step outputs in the outputs key above
-        run: echo "::set-output name=pyfiles::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} HEAD -- '*.py' | uniq | jq -R -s -c 'split("\n")[:-1]' | jq -r '.[] | ("./" + .)' | jq -R -r -s -c 'split("\n")[:-1] | join(",")')"
+        run: echo "::set-output name=pyfiles::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.push.base.ref }} HEAD -- '*.py' | uniq | jq -R -s -c 'split("\n")[:-1]' | jq -r '.[] | ("./" + .)' | jq -R -r -s -c 'split("\n")[:-1] | join(",")')"
         # Define step output named pyfiles base on git diff command to find comma saperated relative paths of commited python files
       
       - name: Print files to be scanned
