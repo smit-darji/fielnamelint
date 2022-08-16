@@ -20,7 +20,22 @@ jobs:
       
       - name: Print files to be scanned
         run: echo "name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} HEAD -- jq -R -s -c 'split("\n")[:-1]' | jq -r '.[] | ("./" + .)' |jq -R -r -s -c 'split("\n")[:-1] | join(",")')"
-
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get modified files
+      id: modified_files
+      uses: trilom/file-changes-action@v1.0.0
+      with:
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create list of modified files
+      id: modified_files_list
+      uses: lucaspinheirogit/list-from-string-array-action@v1.4.3
+      with:
+        stringArray: ${{ steps.modified_files.outputs.files_modified }}
+    - name: Print modified files
+      run: echo '${{ steps.modified_files_list.outputs.stringList }}'
 
 
 
