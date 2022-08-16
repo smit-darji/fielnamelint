@@ -32,8 +32,12 @@ jobs:
       uses: lucaspinheirogit/list-from-string-array-action@v1.4.3
       with:
         stringArray: ${{ steps.modified_files.outputs.files_modified }}
+        separator: '/'
     - name: Print modified files
-      run: echo '${{ steps.modified_files_list.outputs.stringList }}'
+      run: |
+        echo '${{ steps.modified_files_list.outputs.stringList }}'
+        [[ "${{ steps.modified_files_list.outputs._0 }}" == "repo" ]] || exit 1
+
 
 
 
