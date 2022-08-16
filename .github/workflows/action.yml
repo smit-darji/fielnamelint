@@ -22,7 +22,9 @@ jobs:
         # Define step output named filenames base on git diff command to find comma saperated relative paths of commited python files
       
       - name: Print files to be scanned
-        run: cut -d "/"  -f1  test.txt
+        run: |
+          cut -d "/"  -f1  test.txt >> folder.txt
+          cat folder.txt
           
       # - uses: rishabhgupta/split-by@v1
       #   id: split
