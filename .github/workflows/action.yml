@@ -24,7 +24,7 @@ jobs:
       - uses: rishabhgupta/split-by@v1
         id: split
         with:
-          string: 
+          string: 'feat/branch-name'
           split-by: '/'
       - run: | 
           echo "${{ steps.split.outputs._1}}"
