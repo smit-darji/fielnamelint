@@ -36,7 +36,6 @@ jobs:
     - name: Print modified files
       run: |
         echo '${{ steps.modified_files_list.outputs.stringList }}'
-        [[ "${{ steps.modified_files_list.outputs._0 }}" == "repo" ]] || exit 1
 
 
 
