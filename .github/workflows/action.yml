@@ -24,8 +24,8 @@ jobs:
       - name: Print files to be scanned
         run: |
           cut -d "/"  -f1  test.txt >> folder.txt
-          cat folder.txt
-          
+    - name: Print files to be scanned
+      run:  cat folder.txt
       # - uses: rishabhgupta/split-by@v1
       #   id: split
       #   with:
