@@ -18,8 +18,13 @@ jobs:
           path: './demofolder'
           pattern: "^[a-z0-9.-]*$"
 
-      - id: jobs
-        uses: philips-labs/list-folders-action@v1
-        with:
-          path: './'
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v26.1
+
+      - name: List all changed files
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed"
+          done
 
