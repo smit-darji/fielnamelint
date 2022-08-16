@@ -18,3 +18,8 @@ jobs:
           path: './demofolder'
           pattern: "^[a-z0-9.-]*$"
 
+      - id: jobs
+        uses: philips-labs/list-folders-action@v1
+        with:
+          path: ./
+
