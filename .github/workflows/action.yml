@@ -15,7 +15,7 @@ jobs:
 
       - name: Set folder 
         id: folder_name_list # Give it an id to handle to get step outputs in the outputs key above
-        run: echo "::set-output name=filenames::(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )"
+        run: echo "::set-output name=filenames::(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} HEAD -- jq -R -r -s -c 'split("\n")[:-1] | join(",")')"
         # Define step output named filenames base on git diff command to find comma saperated relative paths of commited python files
       
       - name: Print files to be scanned
