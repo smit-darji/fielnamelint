@@ -24,7 +24,7 @@ jobs:
       - uses: rishabhgupta/split-by@v1
         id: split
         with:
-          array: ${{ steps.folder_name_list.outputs.filenames }} 
+          split-by: ${{ steps.folder_name_list.outputs.filenames }} 
           split-by: '/'
       - run: | 
           echo "${{ steps.split.outputs._1}}"
