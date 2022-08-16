@@ -21,7 +21,7 @@ jobs:
       - name: Print files to be scanned
         run: | 
           echo ${{steps.folder_name_list.outputs.filenames}}
-          sh git diff --name-only --diff-filter=ACMRT
+          echo "::set-output name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )"
 
 
 
