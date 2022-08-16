@@ -18,19 +18,19 @@ jobs:
         run: |
           echo "::set-output name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )"
           echo "::set-output name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )" > test.txt
-          cut -d "/"  -f1  test.txt
+          
         # Define step output named filenames base on git diff command to find comma saperated relative paths of commited python files
       
       - name: Print files to be scanned
-        run: echo "name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )"
+        run: cut -d "/"  -f1  test.txt
           
-      - uses: rishabhgupta/split-by@v1
-        id: split
-        with:
-          string: ${{ steps.folder_name_list.output.filenames }} 
-          split-by: '/'
-      - run: | 
-          echo "${{ steps.split.outputs._1}}"
+      # - uses: rishabhgupta/split-by@v1
+      #   id: split
+      #   with:
+      #     string: ${{ steps.folder_name_list.output.filenames }} 
+      #     split-by: '/'
+      # - run: | 
+      #     echo "${{ steps.split.outputs._1}}"
 
 
 
