@@ -21,5 +21,5 @@ jobs:
       - id: jobs
         uses: philips-labs/list-folders-action@v1
         with:
-          path: ./
+          path: './'
 
