@@ -4,8 +4,8 @@ on: pull_request
 jobs:  
   listFiles: # Job that list  files
     runs-on: ubuntu-latest
-    # outputs:
-    #   filenames: ${{ steps.folder_name_list.outputs.filenames }} # generate output name python files by using inner step output
+    outputs:
+      filenames: ${{ steps.folder_name_list.outputs.filenames }} # generate output name python files by using inner step output
     steps:
       - name: Clone Repo
         uses: actions/checkout@v2
