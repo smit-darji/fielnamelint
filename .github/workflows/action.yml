@@ -1,5 +1,5 @@
 name: folder
-on: push
+on: pull_request
 
 jobs:  
   listFiles: # Job that list  files
@@ -12,7 +12,7 @@ jobs:
 
       - name: Get main branch
         run: git fetch --no-tags --prune --depth=1 origin +refs/heads/${{ github.event.pull_request.base.ref }}:refs/remotes/origin/${{ github.event.pull_request.base.ref }}
-        
+
       - name: Set listFiles output variable
         id: set-py-files # Give it an id to handle to get step outputs in the outputs key above
         run: echo "::set-output name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )"
