@@ -1,4 +1,4 @@
-name: 'build-test'
+name: 'folder-test'
 on: # rebuild any PRs and main branch changes
   pull_request:
   push:
@@ -6,17 +6,6 @@ on: # rebuild any PRs and main branch changes
       - 'Master'
 
 jobs:
-  #  tests: # make sure the action works on a clean machine without building
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-
-  #     - name: file name
-  #       uses: batista/lint-filenames@v1
-  #       with:
-  #         path: './demofolder'
-  #         pattern: "^[a-z0-9.-]*$"
   build:
     runs-on: ubuntu-latest  # windows-latest | macos-latest
     name: Test changed-files
