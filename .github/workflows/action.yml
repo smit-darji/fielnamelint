@@ -27,6 +27,7 @@ jobs:
           string: ${{ name }} 
           split-by: '/'
       - run: | 
+          echo $name
           echo "${{ steps.split.outputs._1}}"
 
 
