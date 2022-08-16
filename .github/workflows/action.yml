@@ -24,10 +24,4 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
           done
-      
-      - name: file name
-        uses: batista/lint-filenames@v1
-        with:
-          path: $file
-          pattern: "^[a-z0-9.-]*$"
 
