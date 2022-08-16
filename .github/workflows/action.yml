@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest  # windows-latest | macos-latest
     outputs:
-    pyfiles: ${{ steps.set-py-files.outputs.pyfiles }} 
+      pyfiles: ${{ steps.set-py-files.outputs.pyfiles }} 
     name: Test changed-files
     steps:
       - uses: actions/checkout@v3
