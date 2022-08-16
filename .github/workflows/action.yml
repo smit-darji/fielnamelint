@@ -19,8 +19,9 @@ jobs:
         # Define step output named filenames base on git diff command to find comma saperated relative paths of commited python files
       
       - name: Print files to be scanned
-        run: echo ${{steps.folder_name_list.outputs.filenames}}
-
+        run: | 
+          echo ${{steps.folder_name_list.outputs.filenames}}
+          echo "git diff --name-only --diff-filter=ACMRT"
 
 
 
