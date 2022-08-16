@@ -1,0 +1,19 @@
+name: 'build-test'
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+    branches:
+      - 'Master'
+
+jobs:
+   tests: # make sure the action works on a clean machine without building
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: file name
+        uses: batista/lint-filenames@v1
+        with:
+          path: './demofolder'
+          pattern: "^[a-z0-9.-]*$"
