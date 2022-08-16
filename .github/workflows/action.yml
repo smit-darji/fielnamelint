@@ -35,7 +35,7 @@ jobs:
         separator: '/'
     - name: Print modified files
       run: |
-        echo '${{ steps.modified_files_list.outputs.stringList }}'
+        echo '::set-output name=modified_files::${{ steps.modified_files_list.outputs.stringList }}'
 
 
 
