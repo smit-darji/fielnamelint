@@ -21,6 +21,7 @@ jobs:
         run: echo ${{ steps.gitignore-parser.outputs.requirements_met }}
 
       - name: file name
+        id: gitignore-parser
         uses: batista/lint-filenames@v1
         with:
           must_deny: '.xml'
