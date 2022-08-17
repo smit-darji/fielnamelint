@@ -28,11 +28,11 @@ jobs:
       - name: Lint File Name
         run: |  
           cd demofolder
-          key=asasas
+          key=1234_YOGESH_TEST_12T.TXT
           val=$(echo "${#key}")
 
           key=$(echo $key | cut -c1-1)
-          if ! [[ $key =~ ^[a-zA-Z]+$ ]]; then
+          if ! [[ $key =~ ^^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
             echo 'Wrong key. Only a-zA-Z characters are allowed' >&2 # write to stderr
             exit 1
           fi     
