@@ -35,6 +35,7 @@ jobs:
                 echo "valid" 
               else 
                 echo "$fileName"
+                 echo "valid" 
                 exit 0
               fi
             else         
