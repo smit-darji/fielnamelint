@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Run ESLint for a nested project with changed files and .eslintignore
-        uses: ./
+        uses: tj-actions/eslint-changed-files@v1
         with:
           path: './demofolder'
           pattern: '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'
