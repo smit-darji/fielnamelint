@@ -32,7 +32,7 @@ jobs:
           val=$(echo "${#key}")
 
           key=$(echo $key | cut -c1-1)
-          if ! [[ $key =~ ^^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
+          if ! [[ $key =~ ^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
             echo 'Wrong key. Only a-zA-Z characters are allowed' >&2 # write to stderr
             exit 1
           fi     
