@@ -31,9 +31,9 @@ jobs:
           key=1234_YOGESH_TEST_12T.TXT
           val=$(echo "${#key}")
 
-          if ! [[ $key =~ ^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
-            echo 'Wrong key. Only a-zA-Z characters are allowed' >&2 # write to stderr
+          if  [[ $key = ^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
+            echo 'perfectname' >&2 # write to stderr
             exit 1
           fi     
 
-          echo "True";
+          echo "false";
