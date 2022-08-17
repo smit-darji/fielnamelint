@@ -12,8 +12,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
-      - name: Remove files before linting
-        run: demofolder/text.json
+      - name: Ensure .npmrc and .env are .gitignored
+        id: gitignore-parser
+        uses: dkershner6/gitignore-parser@v1
+        with:
+            must_deny: '.json'
+
+      - name: Print whether .json
+        run: echo ${{ steps.gitignore-parser.outputs.requirements_met }}
 
       - name: file name
         uses: batista/lint-filenames@v1
