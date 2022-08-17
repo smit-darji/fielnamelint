@@ -1,94 +1,94 @@
-name: folder
-on: pull_request
+# name: folder
+# on: pull_request
 
-jobs:  
-  listFiles: # Job that list  files
-    runs-on: ubuntu-latest
-    outputs:
-      filenames: ${{ steps.folder_name_list.outputs.filenames }} # generate output name python files by using inner step output
-    steps:
-      - name: Clone Repo
-        uses: actions/checkout@v2
-
-      - name: Get main branch
-        run: git fetch --no-tags --prune --depth=1 origin +refs/heads/${{ github.event.pull_request.base.ref }}:refs/remotes/origin/${{ github.event.pull_request.base.ref }}
-
-      - name: Set folder 
-        id: folder_name_list # Give it an id to handle to get step outputs in the outputs key above
-        run: |
-          echo "::set-output name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )"
-          echo "::set-output name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )" > test.txt
-          
-        # Define step output named filenames base on git diff command to find comma saperated relative paths of commited python files
-      
-      - name: Get Folder name
-        run: |
-          cut -d "/"  -f1  test.txt 
-          cut -d "/"  -f1  test.txt >> folder.txt
-
-      - name: store  folder name
-        run:  cat folder.txt
-      # - uses: rishabhgupta/split-by@v1
-      #   id: split
-      #   with:
-      #     string: ${{ steps.folder_name_list.output.filenames }} 
-      #     split-by: '/'
-      # - run: | 
-      #     echo "${{ steps.split.outputs._1}}"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# name: 'folder-test'
-# on: # rebuild any PRs and main branch changes
-#   pull_request:
-#   push:
-#     branches:
-#       - 'Master'
-
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest  # windows-latest | macos-latest
-#     name: Test changed-files
+# jobs:  
+#   listFiles: # Job that list  files
+#     runs-on: ubuntu-latest
+#     outputs:
+#       filenames: ${{ steps.folder_name_list.outputs.filenames }} # generate output name python files by using inner step output
 #     steps:
-#       - uses: actions/checkout@v3
-#         with:
-#           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+#       - name: Clone Repo
+#         uses: actions/checkout@v2
 
+#       - name: Get main branch
+#         run: git fetch --no-tags --prune --depth=1 origin +refs/heads/${{ github.event.pull_request.base.ref }}:refs/remotes/origin/${{ github.event.pull_request.base.ref }}
 
-#       - name: Get changed files
-#         id: changed-files
-#         uses: tj-actions/changed-files@v26.1
-
-#       - name: List all changed files
+#       - name: Set folder 
+#         id: folder_name_list # Give it an id to handle to get step outputs in the outputs key above
 #         run: |
-#           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-#             echo "$file was changed"
-#           done
+#           echo "::set-output name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )"
+#           echo "::set-output name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )" > test.txt
+          
+#         # Define step output named filenames base on git diff command to find comma saperated relative paths of commited python files
+      
+#       - name: Get Folder name
+#         run: |
+#           cut -d "/"  -f1  test.txt 
+#           cut -d "/"  -f1  test.txt >> folder.txt
+
+#       - name: store  folder name
+#         run:  cat folder.txt
+#       # - uses: rishabhgupta/split-by@v1
+#       #   id: split
+#       #   with:
+#       #     string: ${{ steps.folder_name_list.output.filenames }} 
+#       #     split-by: '/'
+#       # - run: | 
+#       #     echo "${{ steps.split.outputs._1}}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # name: 'folder-test'
+# # on: # rebuild any PRs and main branch changes
+# #   pull_request:
+# #   push:
+# #     branches:
+# #       - 'Master'
+
+# # jobs:
+# #   build:
+# #     runs-on: ubuntu-latest  # windows-latest | macos-latest
+# #     name: Test changed-files
+# #     steps:
+# #       - uses: actions/checkout@v3
+# #         with:
+# #           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+
+
+# #       - name: Get changed files
+# #         id: changed-files
+# #         uses: tj-actions/changed-files@v26.1
+
+# #       - name: List all changed files
+# #         run: |
+# #           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+# #             echo "$file was changed"
+# #           done
       
 
 
