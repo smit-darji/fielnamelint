@@ -27,11 +27,7 @@ jobs:
           pattern: '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'
 
    eslint-changed-files:
-    runs-on: ${{ matrix.platform }}
-    strategy:
-      fail-fast: false
-      matrix:
-        platform: [ubuntu-latest]
+    runs-on:ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
