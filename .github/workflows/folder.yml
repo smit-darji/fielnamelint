@@ -1,4 +1,4 @@
-name: foldernameeeeeeeeeeeeeeeee
+name: foldername
 on: pull_request
 
 jobs:  
