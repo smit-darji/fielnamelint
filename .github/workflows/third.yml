@@ -28,6 +28,6 @@ jobs:
       - name: Lint File Name
         run: |  
           cd demofolder
-          echo  1234_YOGESH_TEST-12T.TXT  |  egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'   && echo valid
+          echo  1234_YOGESH_TEST_12T.TXT  |  egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'   && echo valid
 
 
