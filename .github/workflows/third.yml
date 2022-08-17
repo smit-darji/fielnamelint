@@ -31,7 +31,7 @@ jobs:
           for fileName in $(ls); do
             if [ $fileName == "test.xml" ]; then
               echo valid
-              exit 1
+              exit 0
             fi
           done
 
