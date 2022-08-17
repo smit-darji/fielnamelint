@@ -16,8 +16,8 @@ jobs:
         id: gitignore-parser
         uses: dkershner6/gitignore-parser@v1
         with:
-            must_deny: '.npmrc,.env'
-            
+            must_deny: '.xml'
+
       - name: file name
         uses: batista/lint-filenames@v1
         with:
