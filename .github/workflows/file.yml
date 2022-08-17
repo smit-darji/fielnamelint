@@ -16,11 +16,8 @@ jobs:
         id: gitignore-parser
         uses: dkershner6/gitignore-parser@v1
         with:
-            must_deny: '.json'
-
-      - name: Print whether .json
-        run: echo ${{ steps.gitignore-parser.outputs.requirements_met }}
-
+            must_deny: '.npmrc,.env'
+            
       - name: file name
         uses: batista/lint-filenames@v1
         with:
