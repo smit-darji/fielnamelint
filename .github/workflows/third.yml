@@ -31,9 +31,8 @@ jobs:
           key=1234_YOGESH_TEST_12T.TXT
           val=$(echo "${#key}")
 
-         _key=$(echo $key | cut -c1-1)
+         key=$(echo $key | cut -c1-1)
           if ! [[ $_key =~ ^[0-9a-zA-Z.]+$ ]]; then
-              # Checks the first character
               echo "False";
               exit
           fi       
