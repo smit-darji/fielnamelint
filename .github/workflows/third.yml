@@ -30,7 +30,7 @@ jobs:
           cd demofolder
           for fileName in $(ls); do
             if [ $fileName != "test.xml" ]; then
-              if [$fileName = "1234_YOGESH_TEST_12T.TXT"]; then
+              if [$fileName == "1234_YOGESH_TEST_12T.TXT"]; then
                 echo "$fileName"
                 echo "valid"
               else 
