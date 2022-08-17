@@ -1,0 +1,61 @@
+name: 'folder-test'
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+    branches:
+      - 'Master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # windows-latest | macos-latest
+    name: Test changed-files
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v26.1
+
+      - name: List all changed files
+        run: |  
+          cd ./demofilder/
+          ls    
+        #   key=$1
+        #   val=$(echo "${#key}")
+
+        #   if [[ $key == "" ]]; then
+        #      echo "False";
+        #      exit
+        #   fi
+
+        #   if [[ $key == "." ]] || [[ $key == ".." ]]; then
+        #       # "." and ".." are added automatically and always exist, so you can't have a
+        #       # file named . or .. // https://askubuntu.com/a/416508/660555
+        #       echo "False";
+        #       exit
+        #   fi
+
+        #   if [ $val -gt 255 ]; then
+        #      # String's length check
+        #      echo "False";
+        #      exit
+        #   fi
+
+        #   if ! [[ $key =~ ^[0-9a-zA-Z._-]+$ ]]; then
+        #       # Checks whether valid characters exist
+        #       echo "False";
+        #       exit
+        #   fi
+
+        #   _key=$(echo $key | cut -c1-1)
+        #   if ! [[ $_key =~ ^[0-9a-zA-Z.]+$ ]]; then
+        #       # Checks the first character
+        #       echo "False";
+        #       exit
+        #   fi
+
+        #   echo "True";
+
