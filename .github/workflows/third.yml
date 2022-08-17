@@ -21,6 +21,6 @@ jobs:
 
       - name: List all changed files
         run: |  
-          cd demofolder > test.txt
-          ls
+          ls demofolder > test
+          cat test
 
