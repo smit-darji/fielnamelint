@@ -17,6 +17,8 @@ jobs:
         uses: dkershner6/gitignore-parser@v1
         with:
             must_deny: '.xml'
+      - name: Print whether .gitignore denies 
+        run: echo ${{ steps.gitignore-parser.outputs.requirements_met }}
 
       - name: file name
         uses: batista/lint-filenames@v1
