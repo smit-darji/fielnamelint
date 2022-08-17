@@ -22,7 +22,7 @@ jobs:
       - name: List all changed files
         run: |  
           ls
-          cd ./demofilder/
+          cd demofilder
           ls    
         #   key=$1
         #   val=$(echo "${#key}")
