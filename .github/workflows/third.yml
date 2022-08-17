@@ -25,7 +25,9 @@ jobs:
           cat test
           pwd
 
-      # - name: Lint File Name
-      #   run: |  
-      #     key=$1
-      #     val=$(echo "${#key}")
+      - name: Lint File Name
+        run: |  
+          cd demofolder
+          key=1234_YOGESH_TEST_12T.TXT
+          echo $key
+
