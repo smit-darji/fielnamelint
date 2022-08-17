@@ -22,15 +22,6 @@ jobs:
       - name: List all changed files
         run: |  
           ls
-          cd demofolder >text.txt
-          cat demofolder/text.txt
-          key=$text.txt
-          val=$(echo "${#key}")
-          _key=$(echo $key | cut -c1-1)
-          if ! [[ $_key =~ ^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
-              echo "False";
-              exit
-          fi
-
-          echo "True";
+          cd demofolder > test.txt
+          ls
 
