@@ -23,4 +23,9 @@ jobs:
         run: |  
           ls demofolder > test
           cat test
+          pwd
 
+      # - name: Lint File Name
+      #   run: |  
+      #     key=$1
+      #     val=$(echo "${#key}")
