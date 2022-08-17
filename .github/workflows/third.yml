@@ -21,6 +21,7 @@ jobs:
 
       - name: List all changed files
         run: |  
+          ls
           cd ./demofilder/
           ls    
         #   key=$1
