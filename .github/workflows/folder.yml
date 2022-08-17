@@ -1,4 +1,4 @@
-name: folder
+name: foldernameeeeeeeeeeeeeeeee
 on: pull_request
 
 jobs:  
@@ -15,19 +15,26 @@ jobs:
 
       - name: Set folder 
         id: folder_name_list # Give it an id to handle to get step outputs in the outputs key above
-        run: echo "::set-output name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )"
+        run: |
+          echo "::set-output name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )"
+          echo "::set-output name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )" > test.txt
+          
         # Define step output named filenames base on git diff command to find comma saperated relative paths of commited python files
       
-      - name: Print files to be scanned
-        run: echo "name=filenames::$(git diff --name-only --diff-filter=ACMRT origin/${{ github.event.pull_request.base.ref }} )"
-          
-      - uses: rishabhgupta/split-by@v1
-        id: split
-        with:
-          string: ${{ steps.folder_name_list.output.filenames }} 
-          split-by: '/'
-      - run: | 
-          echo "${{ steps.split.outputs._1}}"
+      - name: Get Folder name
+        run: |
+          cut -d "/"  -f1  test.txt 
+          cut -d "/"  -f1  test.txt >> folder.txt
+
+      - name: store  folder name
+        run:  cat folder.txt
+      # - uses: rishabhgupta/split-by@v1
+      #   id: split
+      #   with:
+      #     string: ${{ steps.folder_name_list.output.filenames }} 
+      #     split-by: '/'
+      # - run: | 
+      #     echo "${{ steps.split.outputs._1}}"
 
 
 
