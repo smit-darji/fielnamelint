@@ -32,6 +32,6 @@ jobs:
             echo $fileName
           done
           
-          echo  1234_YOGESH_TEST_12T.TXT  |  egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'   && echo valid
+          echo  $fileName  |  egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'   && echo valid
 
 
