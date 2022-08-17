@@ -30,8 +30,12 @@ jobs:
           cd demofolder
           for fileName in $(ls); do
             if [ $fileName != "test.xml" ]; then
-              echo  $fileName
-              echo  $fileName  |  egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$' 
+              if [$fileName == egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$' ]
+                echo " $fileName" 
+                exit 1
+              else 
+                echo " $fileName"
+                exit 0
             else         
               echo  $fileName && echo valid
               exit 0
@@ -42,6 +46,15 @@ jobs:
         #   echo  $fileName  |  egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$' && echo valid         
         # done
 
+#  for fileName in $(ls); do
+#             if [ $fileName != "test.xml" ]; then
+#               echo  $fileName
+#               echo  $fileName  |  egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$' 
+#             else         
+#               echo  $fileName && echo valid
+#               exit 0
+#             fi            
+#           done
 
         
 
