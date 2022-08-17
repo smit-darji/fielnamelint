@@ -21,7 +21,6 @@ jobs:
 
       - name: List all changed files
         run: |  
-          ls
           cd demofolder > test.txt
           ls
 
