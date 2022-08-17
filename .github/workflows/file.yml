@@ -25,3 +25,85 @@ jobs:
         with:
           path: './demofolder'
           pattern: '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'
+
+   eslint-changed-files:
+    runs-on: ${{ matrix.platform }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ubuntu-latest, windows-latest, macos-latest, macos-11, ubuntu-18.04, windows-2022]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3.4.1
+        with:
+          node-version: 14
+          cache: yarn
+          cache-dependency-path: test-app/yarn.lock
+
+      - name: Install dependencies
+        run: yarn
+        working-directory: test-app
+      
+      - name: Run ESLint for a nested project with changed files and .eslintignore
+        uses: ./
+        with:
+          path: "test-app"
+          config_path: "package.json"
+          file_extensions: |
+            **/*.ts
+            **/*.tsx
+          extra_args: "--max-warnings=0"
+          ignore_path: ".eslintignore"
+
+      - name: Run ESLint on changed files with .eslintignore
+        uses: ./
+        with:
+          config_path: "test-app/package.json"
+          file_extensions: |
+            **/*.ts
+            **/*.tsx
+          extra_args: "--max-warnings=0"
+          ignore_path: "test-app/.eslintignore"
+
+      - name: Run ESLint on all files with .eslintignore
+        uses: ./
+        with:
+          config_path: "test-app/package.json"
+          file_extensions: |
+            **/*.ts
+            **/*.tsx
+          extra_args: "--max-warnings=0"
+          all_files: true
+          ignore_path: "test-app/.eslintignore"
+
+      - name: Run ESLint on changed files
+        uses: ./
+        with:
+          config_path: "test-app/package.json"
+          file_extensions: |
+            **/*.ts
+            **/*.tsx
+          extra_args: "--max-warnings=0"
+
+      - name: Run ESLint on all files
+        uses: ./
+        with:
+          config_path: "test-app/package.json"
+          file_extensions: |
+            **/*.ts
+            **/*.tsx
+          extra_args: "--max-warnings=0"
+          all_files: true
+
+      - name: Run ESLint without --config flag
+        uses: ./
+        with:
+          file_extensions: |
+            **/*.ts
+            **/*.tsx
+          extra_args: "--max-warnings=0"
+          all_files: true
