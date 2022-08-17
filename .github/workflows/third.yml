@@ -29,9 +29,9 @@ jobs:
         run: |  
           cd demofolder
           for fileName in $(ls); do
-            echo $fileName
+            echo  $fileName
+            echo  $fileName  |  egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'   && echo valid
           done
-          
-          echo  $fileName  |  egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'   && echo valid
+
 
 
