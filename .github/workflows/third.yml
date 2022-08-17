@@ -32,10 +32,10 @@ jobs:
             if [ $fileName != "test.xml" ]; then
               if [$fileName == egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$' ]; then
                 echo " $fileName valid" 
-                exit 1
+                exit 0
               else 
                 echo "invalid"
-                exit 0
+                exit 1
               fi
             else         
               echo  $fileName && echo valid
