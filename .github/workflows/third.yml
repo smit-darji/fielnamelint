@@ -29,11 +29,10 @@ jobs:
         run: |  
           cd demofolder
           for fileName in $(ls); do
-            if [ $fileName == "*.xml" ]; then
+            if [ $fileName == "test.xml" ]; then
               echo valid
+              exit 1
             fi
-            echo  $fileName
-            echo  $fileName  |  egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'   && echo valid
           done
 
 
