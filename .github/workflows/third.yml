@@ -35,7 +35,7 @@ jobs:
             else
               echo  $fileName
               echo  $fileName  |  egrep -q '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'
-              exit1
+              exit 1
             fi
             
           done
