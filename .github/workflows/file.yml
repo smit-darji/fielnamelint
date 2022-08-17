@@ -25,17 +25,3 @@ jobs:
         with:
           path: './demofolder'
           pattern: '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'
-
-   eslint-changed-files:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Run ESLint for a nested project with changed files and .eslintignore
-        uses: tj-actions/eslint-changed-files@v1
-        with:
-          path: './demofolder'
-          pattern: '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$'
-          extra_args: "--max-warnings=0"
-          ignore_path: ".eslintignore"
