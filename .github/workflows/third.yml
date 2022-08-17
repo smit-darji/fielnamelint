@@ -31,9 +31,9 @@ jobs:
           key=1234_YOGESH_TEST_12T.TXT
           val=$(echo "${#key}")
 
-          if  [[ "$key" = "^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$" ]]; then
-            echo 'name is true' >&2 # write to stderr
+          if  [[ $key == "^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$" ]]; then
+            echo 'name is true'
             exit 1
+          else
+            echo "all name is wrong"
           fi     
-
-          echo "all name is wrong";
