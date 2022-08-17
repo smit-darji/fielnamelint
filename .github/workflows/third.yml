@@ -22,9 +22,9 @@ jobs:
       - name: List all changed files
         run: |  
           ls
-          cd demofolder 
+          cd demofolder >text.txt
 
-          key=$1
+          key=$text.txt
           val=$(echo "${#key}")
           _key=$(echo $key | cut -c1-1)
           if ! [[ $_key =~ ^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
