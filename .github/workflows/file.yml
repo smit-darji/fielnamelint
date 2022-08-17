@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      
+      - name: Remove files before linting
+        run: demofolder/text.json
 
       - name: file name
         uses: batista/lint-filenames@v1
