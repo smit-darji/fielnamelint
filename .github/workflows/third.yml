@@ -22,41 +22,16 @@ jobs:
       - name: List all changed files
         run: |  
           ls
-          cd demofolder
-          ls    
-        #   key=$1
-        #   val=$(echo "${#key}")
+          cd demofolder 
 
-        #   if [[ $key == "" ]]; then
-        #      echo "False";
-        #      exit
-        #   fi
+          key=$1
+          val=$(echo "${#key}")
+          _key=$(echo $key | cut -c1-1)
+          if ! [[ $_key =~ ^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
+              # Checks the first character
+              echo "False";
+              exit
+          fi
 
-        #   if [[ $key == "." ]] || [[ $key == ".." ]]; then
-        #       # "." and ".." are added automatically and always exist, so you can't have a
-        #       # file named . or .. // https://askubuntu.com/a/416508/660555
-        #       echo "False";
-        #       exit
-        #   fi
-
-        #   if [ $val -gt 255 ]; then
-        #      # String's length check
-        #      echo "False";
-        #      exit
-        #   fi
-
-        #   if ! [[ $key =~ ^[0-9a-zA-Z._-]+$ ]]; then
-        #       # Checks whether valid characters exist
-        #       echo "False";
-        #       exit
-        #   fi
-
-        #   _key=$(echo $key | cut -c1-1)
-        #   if ! [[ $_key =~ ^[0-9a-zA-Z.]+$ ]]; then
-        #       # Checks the first character
-        #       echo "False";
-        #       exit
-        #   fi
-
-        #   echo "True";
+          echo "True";
 
