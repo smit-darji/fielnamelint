@@ -30,12 +30,12 @@ jobs:
           cd demofolder
           for fileName in $(ls); do
             if [ $fileName != "test.xml" ]; then
-              if [$fileName = '^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$' ]; then
+              if [$fileName = "1234_YOGESH_TEST_12T.TXT"]; then
                 echo "$fileName"
-                echo "valid" 
+                echo "valid"
               else 
                 echo "$fileName"
-                 echo "valid" 
+                echo "invalid" 
                 exit 0
               fi
             else         
