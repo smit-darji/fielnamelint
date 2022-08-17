@@ -29,5 +29,10 @@ jobs:
         run: |  
           cd demofolder
           key=1234_YOGESH_TEST_12T.TXT
-          echo $key
+          val=$(echo "${#key}")
+
+          if ! [[ $key =~ ^[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
+              echo "False";
+              exit
+          fi         
 
