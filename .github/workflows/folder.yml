@@ -25,7 +25,6 @@ jobs:
           for i in "${!changedfiles[@]}"; do
               if [[ "${changedfiles[i]}" == .github* ]]; then
                   unset 'changedfiles[i]'
-                  echo "ignored filenae:::"
                   echo "${changedfiles[i]}"
               fi
           done
@@ -53,7 +52,7 @@ jobs:
           done   
           invalid_file_names=()
           for file_name in "${unique_file_names[@]}"; do
-            if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ] && [ ! " ${file_names_to_ignore[*]} " =~ " ${changedfiles[i]##*/} " ]; then
+            if [[ (! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ) -o (! " ${file_names_to_ignore[*]} " =~ " ${changedfiles[i]##*/} " )] ]; then
                 invalid_file_names+=(${file_name})
                 echo ${file_name}
                 echo "Invalid FileName" 
