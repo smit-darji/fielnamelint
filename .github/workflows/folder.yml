@@ -27,7 +27,7 @@ jobs:
                   unset 'changedfiles[i]'
                   echo "${changedfiles[i]}"
               fi
-         
+          done
           unique_dirs=()
           unique_file_names=()
           for i in "${!changedfiles[@]}"; do
@@ -54,11 +54,11 @@ jobs:
           for file_name in "${unique_file_names[@]}"; do
             if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
                 invalid_file_names+=(${file_name})
-                echo "Invalid FileName"
+                echo ${file_name}
+                echo "Invalid FileName" 
                 exit 1
             fi
           done 
-          done
         # Define step output named pyfiles base on git diff command to find comma saperated relative paths of commited python files
       
       # - name: Print files to be validated
