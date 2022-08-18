@@ -21,8 +21,12 @@ jobs:
           echo "-----------------------"
           echo ${changedfiles[@]}
           echo "-----------------------"
-
-          sh script.sh
+          file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md")
+          for i in "${!changedfiles[@]}"; do
+              if [[ "${changedfiles[i]}" == .github* ]]; then
+                  unset 'changedfiles[i]'
+              fi
+          done
         # Define step output named pyfiles base on git diff command to find comma saperated relative paths of commited python files
       
       # - name: Print files to be validated
