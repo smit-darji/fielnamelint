@@ -25,6 +25,7 @@ jobs:
           for i in "${!changedfiles[@]}"; do
               if [[ "${changedfiles[i]}" == .github* ]]; then
                   unset 'changedfiles[i]'
+                  echo "${changedfiles[i]}"
                   echo "file has been ignore"
               fi
           done
