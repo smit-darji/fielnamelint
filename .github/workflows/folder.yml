@@ -61,7 +61,7 @@ jobs:
                     exit 1
               fi
             else
-                  echo ${file_name}"
+                  echo "${file_name}"
                   exit 0
             fi
 
