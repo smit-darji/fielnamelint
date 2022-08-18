@@ -26,7 +26,6 @@ jobs:
               if [[ "${changedfiles[i]}" == .github* ]]; then
                   unset 'changedfiles[i]'
                   echo "${changedfiles[i]}"
-                  echo "file has been ignore"
               fi
           done
           unique_dirs=()
