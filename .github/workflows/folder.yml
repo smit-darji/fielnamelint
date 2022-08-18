@@ -25,6 +25,7 @@ jobs:
           for i in "${!changedfiles[@]}"; do
               if [[ "${changedfiles[i]}" == .github* ]]; then
                   unset 'changedfiles[i]'
+                  echo "file has been ignore"
               fi
           done
         # Define step output named pyfiles base on git diff command to find comma saperated relative paths of commited python files
