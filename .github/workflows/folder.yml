@@ -29,6 +29,21 @@ jobs:
                   echo "file has been ignore"
               fi
           done
+          unique_dirs=()
+          unique_file_names=()
+          for i in "${!changedfiles[@]}"; do
+              if [[ ! " ${file_names_to_ignore[*]} " =~ " ${changedfiles[i]##*/} " ]]; then
+                  unique_file_names+=(${changedfiles[i]##*/})
+                  echo "Unique file name"
+              fi
+              IFS='/' read -ra path <<< "${changedfiles[i]%/*}/"
+              for i in "${path[@]}"; do
+                  if [[ ! " ${unique_dirs[*]} " =~ " ${i} " ]]; then
+                      unique_dirs+=(${i})
+                      echo "Unique dir name"
+                  fi
+              done
+          done
         # Define step output named pyfiles base on git diff command to find comma saperated relative paths of commited python files
       
       # - name: Print files to be validated
