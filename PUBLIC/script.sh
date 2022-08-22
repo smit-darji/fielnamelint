@@ -37,13 +37,13 @@ for dir in "${unique_dirs[@]}"; do
     fi
 done  
 
-for file_name in "${file_names_to_ignore[@]}";do
-    if 
-done
+# for file_name in "${file_names_to_ignore[@]}";do
+#     if [[ file_name ]]
+# done
 
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
-    if [[! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
+    if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
           invalid_file_names+=(${file_name})
           echo ${file_name}
           echo "Invalid FileName" 
