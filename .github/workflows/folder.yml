@@ -75,8 +75,8 @@ jobs:
                       echo "Invalid File Names"
                       echo "${invalid_file_names[@]}"
                   fi
-              else
-                  echo "Success!!"
+            else
+                echo "Success!!"
           fi
         # Define step output named pyfiles base on git diff command to find comma saperated relative paths of commited python files
       
