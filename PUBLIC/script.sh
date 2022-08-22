@@ -4,61 +4,50 @@ echo "Set Array: ${arr[@]}"
 echo "-----------------------"
 echo ${CHANGED_FILES[@]}
 echo "-----------------------"
+echo "${CHANGED_FILES}"
+mapfile -t changedfiles < <("${CHANGED_FILES}")
+echo "hello"
+echo "${changedfiles[@]}"
+
 file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md")
-for i in "${!CHANGED_FILES[@]}"; do
-    echo "${CHANGED_FILES[i]}"
-    if [[ "${CHANGED_FILES[i]}" == .github* ]]; then
-        unset 'CHANGED_FILES[i]'
-        echo "${CHANGED_FILES[i]}"
+
+# Remove files of .github directory from list
+for i in "${!changedfiles[@]}"; do
+    if [[ "${changedfiles[i]}" == .github* ]]; then
+        unset 'changedfiles[i]'
     fi
 done
+
+# Get unique directories and file names
 unique_dirs=()
 unique_file_names=()
-for i in "${!CHANGED_FILES[@]}"; do
-    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${CHANGED_FILES[i]##*/} " ]]; then
-        echo "${CHANGED_FILES[i]##*/}"
-        unique_file_names+=(${CHANGED_FILES[i]##*/})
+for i in "${!changedfiles[@]}"; do
+    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${changedfiles[i]##*/} " ]]; then
+        unique_file_names+=(${changedfiles[i]##*/})
     fi
-    IFS='/' read -ra path <<< "${CHANGED_FILES[i]%/*}/"
+    IFS='/' read -ra path <<< "${changedfiles[i]%/*}/"
     for i in "${path[@]}"; do
         if [[ ! " ${unique_dirs[*]} " =~ " ${i} " ]]; then
-            echo "${i}"
             unique_dirs+=(${i})
         fi
     done
 done
+
+# Get Invalid Directory names
 invalid_dirs=()
 for dir in "${unique_dirs[@]}"; do
     if [[ ! "${dir}" =~ ^[A-Z0-9._]*$ ]]; then
         invalid_dirs+=(${dir}) 
-        
     fi
-done  
+done
 
+# Get Invalid Directory names
 invalid_file_names=()
-fileValidator=[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$
-echo "fileva :${fileValidator}"
-echo "uni ${unique_file_names[@]}"
 for file_name in "${unique_file_names[@]}"; do
-    echo "filename: ${file_name}"
-    for fileignore in "${file_names_to_ignore[@]}"; do
-        # echo "file name is :${file_name}"
-        # echo "Ignore: ${fileignore}"
-        # if [[ "${file_name}" == "${fileignore}" ]]; then 
-        #     echo "in contine: ${file_name}"
-        #     continue
-        # #     echo "continue"
-        echo "filename: ${file_name}"
-        echo "fileig: ${fileignore}"
-        if [[ (${file_name} != ${fileValidator} && "${file_name}" == "${fileignore}")  ]]; then
-            invalid_file_names+=(${file_name})            
-            echo "Invalid FileName : ${file_name}" 
-            exit 1
-        fi
- 
-        
-    done    
-done 
+    if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
+        invalid_file_names+=(${file_name}) 
+    fi
+done
 
 if [[ ! -z "$invalid_dirs" || ! -z "$invalid_file_names" ]]; 
     then
@@ -71,12 +60,9 @@ if [[ ! -z "$invalid_dirs" || ! -z "$invalid_file_names" ]];
             echo "Invalid File Names"
             echo "${invalid_file_names[@]}"
         fi
-        exit 1
     else
         echo "Success!!"
-        exit 0
 fi
-
 
 
 
