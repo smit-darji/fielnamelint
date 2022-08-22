@@ -5,8 +5,8 @@
 # changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD) )
 # changedfiles=($(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | uniq | jq -R -s -c 'split("\n")[:-1]' | jq -r '.[] | @sh' | tr -d \'))
 echo "-----------first sh file------------"
-echo "$CHANGED_FILES"
-echo ${changedfiles[@]}
+echo "$CHANGED_FILES[@]"
+# echo ${changedfiles[@]}
 
 file_names_to_ignore=("pom.xml" , "changelog.xml" , "ReadMe.md" , "script.sh")
 for i in "${!changedfiles[@]}"; do
