@@ -28,7 +28,6 @@ jobs:
       steps:
         - name: Echo python files to scan
           run: |
-            echo 
             echo ${{ needs.changedFilesList.outputs.changedfile }}
 
         - name: Checkout
