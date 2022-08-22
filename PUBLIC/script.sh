@@ -3,6 +3,9 @@ arr=($CHANGED_FILES)
 echo "${arr[@]}"
 echo "-----------------------"
 echo ${CHANGED_FILES[@]}
+echo "-----------------------"echo "$CHANGED_FILES"
+echo "-----------------------"
+echo "arry is :${arr[@]}"
 echo "-----------------------"
 file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md")
 for i in "${!CHANGED_FILES[@]}"; do
@@ -34,10 +37,8 @@ invalid_dirs=()
 for dir in "${unique_dirs[@]}"; do
     if [[ ! "${dir}" =~ ^[A-Z0-9._]*$ ]]; then
         invalid_dirs+=(${dir}) 
-        
     fi
 done  
-
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
     if [[ ! " ${file_names_to_ignore[*]} " =~ " ${CHANGED_FILES[i]##*/} " ]]; then
@@ -47,9 +48,7 @@ for file_name in "${unique_file_names[@]}"; do
         invalid_file_names+=(${file_name})
         echo ${file_name}
     fi
-
 done 
-
 if [[ ! -z "$invalid_dirs" || ! -z "$invalid_file_names" ]]; 
     then
         echo "Failed!!"
