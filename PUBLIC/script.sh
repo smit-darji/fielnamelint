@@ -38,8 +38,9 @@ done
 invalid_file_names=()
 fileValidator=[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$
 echo "fileva :${fileValidator}"
+echo "uni ${unique_file_names[@]}"
 for file_name in "${unique_file_names[@]}"; do
- echo "filename: ${file_name}"
+    echo "filename: ${file_name}"
     for fileignore in "${file_names_to_ignore[@]}"; do
         # echo "file name is :${file_name}"
         # echo "Ignore: ${fileignore}"
