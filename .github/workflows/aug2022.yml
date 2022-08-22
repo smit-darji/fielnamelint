@@ -18,7 +18,9 @@ jobs:
 
       - name: Set changedFiles output variable
         id: set-changed-files # Give it an id to handle to get step outputs in the outputs key above
-        run: echo ::set-output name=pyfiles::${files[@]} 
+        run: |
+          echo ${files[@]} 
+          echo ::set-output name=pyfiles::${files[@]} 
         # Define step output named changedfiles base on git diff command to store list of changed files
       
       - name: Print files to be validated
