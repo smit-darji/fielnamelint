@@ -41,7 +41,7 @@ for file_name in "${unique_file_names[@]}"; do
     for file_name_test in "${file_names_to_ignore[@]}";do
         if [[ "${file_name}" == "${file_name_test }" ]]; then
             echo "in pom "
-            echo ${file_name_test }
+            echo ${file_name_test}
             echo ${file_name}
             exit 0    
         elif [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
