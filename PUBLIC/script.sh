@@ -43,9 +43,8 @@ for file_name in "${unique_file_names[@]}"; do
             echo "in pom "
             echo ${file_name_test }
             echo ${file_name}
-            exit 0
-        fi     
-        elif [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ] ]; then
+            exit 0    
+        elif [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
             invalid_file_names+=(${file_name})
             echo ${file_name}
             echo "Invalid FileName" 
