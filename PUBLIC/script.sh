@@ -36,20 +36,22 @@ for dir in "${unique_dirs[@]}"; do
         exit 1
     fi
 done  
-
-# for file_name in "${file_names_to_ignore[@]}";do
-#     if [[ file_name ]]
-# done
-
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
-    if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
-          invalid_file_names+=(${file_name})
-          echo ${file_name}
-          echo "Invalid FileName" 
-          exit 1
-    fi
-  
+    for file_name_test in "${file_names_to_ignore[@]}";do
+        if [[ "${file_name}" == "${file_name_test }" ]]; then
+            echo "in pom "
+            echo ${file_name_test }
+            echo ${file_name}
+            exit 0
+        fi     
+        elif [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ] ]; then
+            invalid_file_names+=(${file_name})
+            echo ${file_name}
+            echo "Invalid FileName" 
+            exit 1
+        fi  
+    done
 done 
 if [[ ! -z "$invalid_dirs" || ! -z "$invalid_file_names" ]]; 
     then
