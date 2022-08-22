@@ -22,7 +22,7 @@ jobs:
         # Define step output named changedfiles base on git diff command to store list of changed files
       
       - name: Print files to be validated
-        run: echo ${{fromJSON(steps.set-changed-files.outputs.changedfiles)}}
+        run: echo ${{steps.set-changed-files.outputs.changedfiles}}
   file_and_directory_name_validator:
       runs-on: ubuntu-latest
       needs: changedFiles
