@@ -43,10 +43,10 @@ jobs:
           done
           invalid_dirs=()
           for dir in "${unique_dirs[@]}"; do
-            echo ${dir}
               if [[ ! "${dir}" =~ ^[A-Z0-9._]*$ ]]; then
+                    echo ${dir}
                   invalid_dirs+=(${dir}) 
-                  echo ${dir}
+                  
                   echo "Invalid Dirrectory Name"
                   exit 1
               fi
