@@ -1,4 +1,4 @@
-echo "$CHANGED_FILES"
+echo ${changedfiles[@]}
 echo "-----------first sh file------------"
 
 git fetch --no-tags --prune --depth=1 origin +refs/heads/Master:refs/remotes/origin/Master
