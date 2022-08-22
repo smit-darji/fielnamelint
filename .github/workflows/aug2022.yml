@@ -41,6 +41,7 @@ jobs:
             CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfile }}
           run: |
                 echo ${CHANGED_FILES}
+                echo "Arr ${CHANGED_FILES[@]}"
                 chmod +x PUBLIC/script.sh
                 PUBLIC/script.sh
           shell: bash
