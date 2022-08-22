@@ -17,14 +17,12 @@ unique_dirs=()
 unique_file_names=()
 for i in "${!CHANGED_FILES[@]}"; do
     if [[ ! " ${file_names_to_ignore[*]} " =~ " ${CHANGED_FILES[i]##*/} " ]]; then
-        echo "-------------"
         echo "${CHANGED_FILES[i]##*/}"
         unique_file_names+=(${CHANGED_FILES[i]##*/})
     fi
     IFS='/' read -ra path <<< "${CHANGED_FILES[i]%/*}/"
     for i in "${path[@]}"; do
         if [[ ! " ${unique_dirs[*]} " =~ " ${i} " ]]; then
-            echo "==========="
             echo "${i}"
             unique_dirs+=(${i})
         fi
