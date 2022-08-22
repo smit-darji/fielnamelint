@@ -42,8 +42,8 @@ for file_name in "${unique_file_names[@]}"; do
         if [[ "${file_name}" == "${fileignore}" ]]; then 
             echo "${file_name}"
             continue
-        fi
-        if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
+        
+        elif [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
                 invalid_file_names+=(${file_name})
                 echo ${file_name}
                 echo "Invalid FileName" 
