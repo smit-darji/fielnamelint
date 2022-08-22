@@ -1,9 +1,9 @@
 
 
-git fetch --no-tags --prune --depth=1 origin +refs/heads/Master:refs/remotes/origin/Master
-echo "::set-output name=changedfiles::$(git diff --name-only --diff-filter=ACMRT origin/Master HEAD)"
+# git fetch --no-tags --prune --depth=1 origin +refs/heads/Master:refs/remotes/origin/Master
+# echo "::set-output name=changedfiles::$(git diff --name-only --diff-filter=ACMRT origin/Master HEAD)"
 # changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD) )
-changedfiles=($(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | uniq | jq -R -s -c 'split("\n")[:-1]' | jq -r '.[] | @sh' | tr -d \'))
+# changedfiles=($(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | uniq | jq -R -s -c 'split("\n")[:-1]' | jq -r '.[] | @sh' | tr -d \'))
 echo "-----------first sh file------------"
 echo ${changedfiles[@]}
 
