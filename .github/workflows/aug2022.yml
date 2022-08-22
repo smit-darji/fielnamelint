@@ -35,7 +35,7 @@ jobs:
       needs: changedFiles
       steps:
         - name: Echo python files to scan
-          run: echo ${{ needs.pythonFiles.outputs.pyfiles }}
+          run: echo ${{ steps.set-changed-files.outputs.changedfiles }}
 
         - name: Checkout
           uses: actions/checkout@v2
@@ -45,9 +45,9 @@ jobs:
 
         - name: Run Validation
           env:
-            CHANGED_FILES: ${{ needs.pythonFiles.outputs.pyfiles }}
+            CHANGED_FILES: ${{ needs.set-changed-files.outputs.changedfiles }}
           run: |
-                echo ${{ needs.pythonFiles.outputs.pyfiles }}
+                echo ${{ needs.set-changed-files.outputs.changedfiles }}
                 chmod +x PUBLIC/script.sh
                 PUBLIC/script.sh
           shell: bash
