@@ -1,10 +1,10 @@
-echo "-----------first sh file------------"
+
 
 git fetch --no-tags --prune --depth=1 origin +refs/heads/Master:refs/remotes/origin/Master
 echo "::set-output name=changedfiles::$(git diff --name-only --diff-filter=ACMRT origin/Master HEAD)"
 # changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD) )
 changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | uniq | jq -R -s -c 'split("\n")[:-1]' | jq -r '.[] | @sh' | tr -d \') )
-echo "-----------------------"
+echo "-----------first sh file------------"
 echo ${changedfiles[@]}
 echo "-----------------------"
 file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md")
