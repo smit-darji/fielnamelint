@@ -1,4 +1,5 @@
 echo "$CHANGED_FILES"
+echo "-----------first sh file------------"
 
 git fetch --no-tags --prune --depth=1 origin +refs/heads/Master:refs/remotes/origin/Master
 echo "::set-output name=changedfiles::$(git diff --name-only --diff-filter=ACMRT origin/Master HEAD)"
