@@ -3,11 +3,6 @@ arr=($CHANGED_FILES)
 echo "Set Array: ${arr[@]}"
 echo "-----------------------"
 echo ${CHANGED_FILES[@]}
-echo "-----------------------"
-echo "${CHANGED_FILES}"
-mapfile -t changedfiles < <("${CHANGED_FILES}")
-echo "hello"
-echo "${changedfiles[@]}"
 
 file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md")
 
