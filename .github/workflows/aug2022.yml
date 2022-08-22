@@ -25,7 +25,7 @@ jobs:
       - name: Print files to be validated
         run: |
           echo "-----------------------"
-          echo ${changedfiles[@]}
+          echo ${changedfiles}
           echo "-----------------------"
           echo ${{ steps.set-changed-files.outputs.changedfiles }}
 
