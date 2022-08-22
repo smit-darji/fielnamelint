@@ -39,7 +39,6 @@ invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
     echo "--------------11111-------------------"
     echo "${file_name}" 
-    echo "---------------------file_name_test" 
     for file_name_test in "${file_names_to_ignore[@]}";do
         echo "${file_name_test}" 
         echo "---------------------file_name_test" 
