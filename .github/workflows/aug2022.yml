@@ -50,6 +50,7 @@ jobs:
           env:
             CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfile }}
           run: |
+                echo ${changedfiles[@]}
                 chmod +x PUBLIC/script.sh
                 PUBLIC/script.sh
           shell: bash
