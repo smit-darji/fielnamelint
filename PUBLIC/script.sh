@@ -4,7 +4,9 @@ git fetch --no-tags --prune --depth=1 origin +refs/heads/Master:refs/remotes/ori
 echo "::set-output name=changedfiles::$(git diff --name-only --diff-filter=ACMRT origin/Master HEAD)"
 # changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD) )
 changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | uniq | jq -R -s -c 'split("\n")[:-1]' | jq -r '.[] | @sh' | tr -d \') )
+echo "-----------first sh file------------"
 echo ${changedfiles[@]}
+
 file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md","script.sh")
 for i in "${!changedfiles[@]}"; do
     if [[ "${changedfiles[i]}" == .github* ]]; then
@@ -34,32 +36,14 @@ for dir in "${unique_dirs[@]}"; do
         exit 1
     fi
 done  
-
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
-    echo "--------------11111-------------------"
-    echo "${file_name}" 
-    for file_name_test in "${file_names_to_ignore[@]}";do
-        echo "${file_name_test}" 
-        echo "---------------------file_name_test" 
-        if [[ "${file_name}" == "${file_name_test }" ]]; then
-            echo "---------------inpom=-------------------"
-            echo ${file_name_test}
-            echo ${file_name}
-            exit 0    
-            if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
-                invalid_file_names+=(${file_name})
-                echo ${file_name}
-                echo "Invalid FileName" 
-                exit 1
-            fi
-        elif [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
+    if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ] && [ "${file_name}" != "${file_names_to_ignore}"]]; then
             invalid_file_names+=(${file_name})
             echo ${file_name}
             echo "Invalid FileName" 
             exit 1
-        fi  
-    done
+        fi 
 done 
 if [[ ! -z "$invalid_dirs" || ! -z "$invalid_file_names" ]]; 
     then
