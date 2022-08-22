@@ -6,7 +6,6 @@ echo ${CHANGED_FILES[@]}
 echo "-----------------------"
 file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md")
 for i in "${!CHANGED_FILES[@]}"; do
-    echo "========="
     echo "${CHANGED_FILES[i]}"
     if [[ "${CHANGED_FILES[i]}" == .github* ]]; then
         unset 'CHANGED_FILES[i]'
@@ -46,8 +45,8 @@ for file_name in "${unique_file_names[@]}"; do
         #     echo "in contine: ${file_name}"
         #     continue
         # #     echo "continue"
-        # echo "filename: ${file_name}"
-        # echo "fileig: ${fileignore}"
+        echo "filename: ${file_name}"
+        echo "fileig: ${fileignore}"
         if [[ (${file_name} != ${fileValidator} && "${file_name}" == "${fileignore}")  ]]; then
             invalid_file_names+=(${file_name})            
             echo "Invalid FileName : ${file_name}" 
