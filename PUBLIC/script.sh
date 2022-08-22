@@ -38,7 +38,7 @@ for dir in "${unique_dirs[@]}"; do
 done  
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
-    if [ ! "${file_name}" =~ "${file_names_to_ignore}" ]; then 
+    if [ "${file_name}" == "${file_names_to_ignore}" ]; then 
         echo "file_name is --------------"
         echo ${file_name}
         continue
