@@ -7,7 +7,7 @@ changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | u
 echo "-----------first sh file------------"
 echo ${changedfiles[@]}
 
-file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md","script.sh")
+file_names_to_ignore=("pom.xml", "changelog.xml", "ReadMe.md", "script.sh")
 for i in "${!changedfiles[@]}"; do
     if [[ "${changedfiles[i]}" == .github* ]]; then
         unset 'changedfiles[i]'
@@ -39,7 +39,7 @@ done
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
     for fileignore in "${file_names_to_ignore[@]}"; do
-        echo "${file_name}"
+        echo "file name is :::${file_name}"
         echo "${fileignore}"
         if [[ "${file_name}" == "${fileignore}" ]]; then 
             echo "${file_name}"
