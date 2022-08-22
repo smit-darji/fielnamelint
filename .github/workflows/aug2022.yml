@@ -40,7 +40,7 @@ jobs:
           env:
             CHANGED_FILES: ${{ needs.pythonFiles.outputs.pyfiles }}
           run: |
-                ${{ needs.pythonFiles.outputs.pyfiles }}
+                echo ${{ needs.pythonFiles.outputs.pyfiles }}
                 chmod +x PUBLIC/script.sh
                 PUBLIC/script.sh
           shell: bash
