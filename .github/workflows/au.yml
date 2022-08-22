@@ -15,8 +15,9 @@ jobs:
       
       - name: Get list of changed files
         id: set-changed-files
-        run: echo ::set-output name=changedFiles::$(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | uniq)
-      
+        run: |
+          echo ::set-output name=changedFiles::$(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | uniq)
+          echo ${changedFiles[@]}
       - name: Set changedFiles output variable
         run: echo ${{steps.set-changed-files.outputs.changedFiles}}
  

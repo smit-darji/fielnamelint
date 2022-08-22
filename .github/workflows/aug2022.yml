@@ -17,8 +17,10 @@ jobs:
         id: set-changed-files # Give it an id to handle to get step outputs in the outputs key above
         run: | 
           echo "::set-output name=changedfile::$(git diff --name-only --diff-filter=ACMRT origin/Master HEAD)"
+          changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD) )
+          echo ${changedfile[@]} 
           echo "-----------------------"
-          echo ${changedfile[@]}          
+       
 
 
   file_and_directory_name_validator:
