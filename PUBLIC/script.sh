@@ -8,21 +8,20 @@ changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | u
 echo "-----------------------"
 echo ${changedfiles[@]}
 echo "-----------------------"
-
-file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md","script.sh")
-for i in "${!CHANGED_FILES[@]}"; do
-    if [[ "${CHANGED_FILES[i]}" == .github* ]]; then
-        unset 'CHANGED_FILES[i]'
-        echo "${CHANGED_FILES[i]}"
+file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md")
+for i in "${!changedfiles[@]}"; do
+    if [[ "${changedfiles[i]}" == .github* ]]; then
+        unset 'changedfiles[i]'
+        echo "${changedfiles[i]}"
     fi
 done
 unique_dirs=()
 unique_file_names=()
-for i in "${!CHANGED_FILES[@]}"; do
-    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${CHANGED_FILES[i]##*/} " ]]; then
-        unique_file_names+=(${CHANGED_FILES[i]##*/})
+for i in "${!changedfiles[@]}"; do
+    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${changedfiles[i]##*/} " ]]; then
+        unique_file_names+=(${changedfiles[i]##*/})
     fi
-    IFS='/' read -ra path <<< "${CHANGED_FILES[i]%/*}/"
+    IFS='/' read -ra path <<< "${changedfiles[i]%/*}/"
     for i in "${path[@]}"; do
         if [[ ! " ${unique_dirs[*]} " =~ " ${i} " ]]; then
             unique_dirs+=(${i})
@@ -38,22 +37,21 @@ for dir in "${unique_dirs[@]}"; do
         exit 1
     fi
 done  
-
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
-    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${CHANGED_FILES[i]##*/} " ]]; then
-        exit 0                           
+    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${changedfiles[i]##*/} " ]]; then
+          echo " ${changedfiles[i]##*/} " 
+          invalid_file_names+=(${file_name})
+          exit 0                           
+    
+    elif ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
+          invalid_file_names+=(${file_name})
+          echo ${file_name}
+          echo "Invalid FileName" 
+          exit 1
     fi
-    if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
-        echo ${file_name}
-        invalid_file_names+=(${file_name})
-        echo ${file_name}
-        echo "Invalid FileName" 
-        exit 1
-    fi
-
+  
 done 
-
 if [[ ! -z "$invalid_dirs" || ! -z "$invalid_file_names" ]]; 
     then
         echo "Failed!!"
