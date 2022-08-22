@@ -37,9 +37,10 @@ for dir in "${unique_dirs[@]}"; do
     fi
 done  
 
-for filename in "${file_names_to_ignore[@]}";do
-    echo $file_name
+for file_name in "${file_names_to_ignore[@]}";do
+    echo ${file_names_to_ignore[@]}
     echo "-------------------filename egduiyeg-----------------"
+    echo  ${file_name}
 done
 
 invalid_file_names=()
