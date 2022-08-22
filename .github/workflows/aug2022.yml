@@ -29,6 +29,7 @@ jobs:
         - name: Echo python files to scan
           run: |
             echo ${{ needs.changedFilesList.outputs.changedfile }}
+            changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD) )
             echo ${changedfile[@]} 
 
         - name: Checkout
