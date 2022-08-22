@@ -5,19 +5,19 @@ echo "-----------------------"
 echo ${CHANGED_FILES[@]}
 
 file_names_to_ignore=("pom.xml" , "changelog.xml" , "ReadMe.md" , "script.sh")
-for i in "${!changedfiles[@]}"; do
-    if [[ "${changedfiles[i]}" == .github* ]]; then
-        unset 'changedfiles[i]'
-        echo "${changedfiles[i]}"
+for i in "${!CHANGED_FILES[@]}"; do
+    if [[ "${CHANGED_FILES[i]}" == .github* ]]; then
+        unset 'CHANGED_FILES[i]'
+        echo "${CHANGED_FILES[i]}"
     fi
 done
 unique_dirs=()
 unique_file_names=()
-for i in "${!changedfiles[@]}"; do
-    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${changedfiles[i]##*/} " ]]; then
-        unique_file_names+=(${changedfiles[i]##*/})
+for i in "${!CHANGED_FILES[@]}"; do
+    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${CHANGED_FILES[i]##*/} " ]]; then
+        unique_file_names+=(${CHANGED_FILES[i]##*/})
     fi
-    IFS='/' read -ra path <<< "${changedfiles[i]%/*}/"
+    IFS='/' read -ra path <<< "${CHANGED_FILES[i]%/*}/"
     for i in "${path[@]}"; do
         if [[ ! " ${unique_dirs[*]} " =~ " ${i} " ]]; then
             unique_dirs+=(${i})
