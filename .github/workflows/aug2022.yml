@@ -18,7 +18,7 @@ jobs:
         run: | 
           echo "::set-output name=changedfile::$(git diff --name-only --diff-filter=ACMRT origin/Master)"
           echo "-----------------------"
-          echo ${changedfiles}
+          echo ${changedfile}
           
           
 
