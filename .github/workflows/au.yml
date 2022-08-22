@@ -2,10 +2,10 @@ name: File and Directory name lint validation
 on: pull_request
 
 jobs:  
-  changedFilesList: # Job that list python files
+  changedFilesList:
     runs-on: ubuntu-latest
     outputs:
-      changedFiles: ${{ steps.set-changed-files.outputs.changedFiles }} 
+      changedFiles: ${{ steps.set-changed-files.outputs.changedFiles }} # generate output name python files by using inner step output
     steps:
       - name: Clone Repo
         uses: actions/checkout@v2
@@ -13,10 +13,11 @@ jobs:
       - name: Get Master branch
         run: git fetch --no-tags --prune --depth=1 origin +refs/heads/${{ github.event.pull_request.base.ref }}:refs/remotes/origin/${{ github.event.pull_request.base.ref }}
       
-      - name: Get changed files
-        id: set-changed-files # Give it an id to handle to get step outputs in the outputs key above
-        run: echo ::set-output name=changedFiles::$(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | uniq)
-      
+      - name: Get list of changed files
+        id: set-changed-files
+        run: |
+          echo ::set-output name=changedFiles::$(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | uniq)
+          echo ${changedFiles[@]}
       - name: Set changedFiles output variable
         run: echo ${{steps.set-changed-files.outputs.changedFiles}}
  
