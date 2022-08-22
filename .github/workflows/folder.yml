@@ -64,20 +64,20 @@ jobs:
                 fi
             done 
 
-          if [[ ! -z "$invalid_dirs" || ! -z "$invalid_file_names" ]]; 
-              then
-                  echo "Failed!!"
-                  if [[ ! -z "$invalid_dirs" ]]; then
-                      echo "Invalid Directory Names"
-                      echo "${invalid_dirs[@]}"
-                  fi 
-                  if [[ ! -z "$invalid_file_names" ]]; then
-                      echo "Invalid File Names"
-                      echo "${invalid_file_names[@]}"
-                  fi
+            if [[ ! -z "$invalid_dirs" || ! -z "$invalid_file_names" ]]; 
+            then
+                echo "Failed!!"
+                if [[ ! -z "$invalid_dirs" ]]; then
+                    echo "Invalid Directory Names"
+                    echo "${invalid_dirs[@]}"
+                fi 
+                if [[ ! -z "$invalid_file_names" ]]; then
+                    echo "Invalid File Names"
+                    echo "${invalid_file_names[@]}"
+                fi
             else
                 echo "Success!!"
-          fi
+            fi
         # Define step output named pyfiles base on git diff command to find comma saperated relative paths of commited python files
       
       # - name: Print files to be validated
