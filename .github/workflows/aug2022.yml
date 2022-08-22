@@ -10,7 +10,7 @@ jobs:
       - name: Clone Repo
         uses: actions/checkout@v2
 
-      - name: Get main branch
+      - name: Get Master branch
         run: git fetch --no-tags --prune --depth=1 origin +refs/heads/${{ github.event.pull_request.base.ref }}:refs/remotes/origin/${{ github.event.pull_request.base.ref }}
       
       - name: Get list of changed files
