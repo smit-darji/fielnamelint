@@ -33,7 +33,7 @@ jobs:
   file_and_directory_name_validator:
       runs-on: ubuntu-latest
       needs: changedFilesList
-      if: ${{ needs.changedFilesList.outputs.pyfiles != '' }}
+      if: ${{ needs.changedFilesList.outputs.changedfile != '' }}
       steps:
         - name: Echo python files to scan
           run: echo ${{ needs.changedFilesList.outputs.changedfile }}
