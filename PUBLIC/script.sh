@@ -48,7 +48,8 @@ for file_name in "${unique_file_names[@]}"; do
         echo "continue"
         if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
                 invalid_file_names+=(${file_name})
-                echo "Invalid FileName" 
+                
+                echo "Invalid FileName : ${file_name}" 
                 exit 1
         fi
     done
