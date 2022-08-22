@@ -35,7 +35,7 @@ jobs:
       needs: changedFilesList
       steps:
         - name: Echo python files to scan
-          run: echo ${{ need.changedFilesList.outputs.changedfiles }}
+          run: echo ${{ needs.changedFilesList.outputs.changedfiles }}
 
         - name: Checkout
           uses: actions/checkout@v2
