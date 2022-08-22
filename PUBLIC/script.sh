@@ -46,6 +46,8 @@ for file_name in "${unique_file_names[@]}"; do
         #     echo "in contine: ${file_name}"
         #     continue
         #     echo "continue"
+        echo "filename: ${file_name}"
+        echo "filename: ${fileignore}"
         if ([${file_name} != ${fileValidator} ] && [ ${file_name} != ${fileignore} ]); then
             invalid_file_names+=(${file_name})            
             echo "Invalid FileName : ${file_name}" 
