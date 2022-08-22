@@ -41,7 +41,6 @@ jobs:
                   fi
               done
           done
-          echo ${unique_dirs[@]}
           invalid_dirs=()
           for dir in "${unique_dirs[@]}"; do
               if [[ ! "${dir}" =~ ^[A-Z0-9._]*$ ]]; then
