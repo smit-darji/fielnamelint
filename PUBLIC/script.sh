@@ -4,16 +4,13 @@ echo "Set Array: ${arr[@]}"
 echo "-----------------------"
 echo ${CHANGED_FILES[@]}
 
-file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md")
-
-# Remove files of .github directory from list
+file_names_to_ignore=("pom.xml" , "changelog.xml" , "ReadMe.md" , "script.sh")
 for i in "${!changedfiles[@]}"; do
     if [[ "${changedfiles[i]}" == .github* ]]; then
         unset 'changedfiles[i]'
+        echo "${changedfiles[i]}"
     fi
 done
-
-# Get unique directories and file names
 unique_dirs=()
 unique_file_names=()
 for i in "${!changedfiles[@]}"; do
@@ -27,24 +24,36 @@ for i in "${!changedfiles[@]}"; do
         fi
     done
 done
-
-# Get Invalid Directory names
 invalid_dirs=()
 for dir in "${unique_dirs[@]}"; do
     if [[ ! "${dir}" =~ ^[A-Z0-9._]*$ ]]; then
         invalid_dirs+=(${dir}) 
+        echo ${dir}
+        echo "Invalid Dirrectory Name"
+        exit 1
     fi
-done
-
-# Get Invalid Directory names
+done  
 invalid_file_names=()
+fileValidator=[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$
 for file_name in "${unique_file_names[@]}"; do
-    echo ${file_name}
-    if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
-        invalid_file_names+=(${file_name}) 
-    fi
-done
-
+    for fileignore in "${file_names_to_ignore[@]}"; do
+        # echo "file name is :${file_name}"
+        # echo "Ignore: ${fileignore}"
+        # if [[ "${file_name}" == "${fileignore}" ]]; then 
+        #     echo "in contine: ${file_name}"
+        #     continue
+        # #     echo "continue"
+        # echo "filename: ${file_name}"
+        # echo "fileig: ${fileignore}"
+        if [[ ${file_name} != ${fileValidator} ]]; then
+            invalid_file_names+=(${file_name})            
+            echo "Invalid FileName : ${file_name}" 
+            exit 1
+        fi
+ 
+        
+    done    
+done 
 if [[ ! -z "$invalid_dirs" || ! -z "$invalid_file_names" ]]; 
     then
         echo "Failed!!"
