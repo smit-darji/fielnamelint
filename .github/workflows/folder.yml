@@ -54,6 +54,7 @@ jobs:
           invalid_file_names=()
           for file_name in "${unique_file_names[@]}"; do
               if [[ ! " ${file_names_to_ignore[*]} " =~ " ${changedfiles[i]##*/} " ]]; then
+                    echo "${file_names_to_ignore[*]}"
                     exit 0                           
               
               elif ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
