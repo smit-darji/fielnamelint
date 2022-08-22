@@ -5,7 +5,7 @@ jobs:
   changedFilesList: # Job that list python files
     runs-on: ubuntu-latest
     outputs:
-      pyfiles: ${{ steps.set-changed-files.outputs.changedfile }} 
+      changedfile: ${{ steps.set-changed-files.outputs.changedfile }} 
     steps:
       - name: Clone Repo
         uses: actions/checkout@v2
