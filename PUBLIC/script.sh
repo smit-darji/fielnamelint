@@ -8,7 +8,7 @@ echo "-----------------------"
 echo ${changedfiles[@]}
 echo "-----------------------"
 
-file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md")
+file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md","script.sh")
 for i in "${!CHANGED_FILES[@]}"; do
     if [[ "${CHANGED_FILES[i]}" == .github* ]]; then
         unset 'CHANGED_FILES[i]'
