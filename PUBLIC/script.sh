@@ -3,7 +3,7 @@
 git fetch --no-tags --prune --depth=1 origin +refs/heads/Master:refs/remotes/origin/Master
 echo "::set-output name=changedfiles::$(git diff --name-only --diff-filter=ACMRT origin/Master HEAD)"
 # changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD) )
-changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | uniq | jq -R -s -c 'split("\n")[:-1]' | jq -r '.[] | @sh' | tr -d \') )
+changedfiles=($(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | uniq | jq -R -s -c 'split("\n")[:-1]' | jq -r '.[] | @sh' | tr -d \'))
 echo "-----------first sh file------------"
 echo ${changedfiles[@]}
 
@@ -45,10 +45,10 @@ for file_name in "${unique_file_names[@]}"; do
         # if [[ "${file_name}" == "${fileignore}" ]]; then 
         #     echo "in contine: ${file_name}"
         #     continue
-        #     echo "continue"
-        echo "filename: ${file_name}"
-        echo "fileig: ${fileignore}"
-        if [[${file_name} != ${fileValidator} ] && [ ${file_name} != ${fileignore} ]]; then
+        # #     echo "continue"
+        # echo "filename: ${file_name}"
+        # echo "fileig: ${fileignore}"
+        if [[ ${file_name} != ${fileValidator} ]]; then
             invalid_file_names+=(${file_name})            
             echo "Invalid FileName : ${file_name}" 
             exit 1
