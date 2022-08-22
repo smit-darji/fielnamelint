@@ -4,9 +4,7 @@ git fetch --no-tags --prune --depth=1 origin +refs/heads/Master:refs/remotes/ori
 echo "::set-output name=changedfiles::$(git diff --name-only --diff-filter=ACMRT origin/Master HEAD)"
 # changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD) )
 changedfiles=( $(git diff --name-only --diff-filter=ACMRT origin/Master HEAD | uniq | jq -R -s -c 'split("\n")[:-1]' | jq -r '.[] | @sh' | tr -d \') )
-echo "-----------first sh file------------"
 echo ${changedfiles[@]}
-echo "-----------------------"
 file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md","script.sh")
 for i in "${!changedfiles[@]}"; do
     if [[ "${changedfiles[i]}" == .github* ]]; then
@@ -36,8 +34,10 @@ for dir in "${unique_dirs[@]}"; do
         exit 1
     fi
 done  
+
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
+    echo "--------------11111-------------------"
     for file_name_test in "${file_names_to_ignore[@]}";do
         if [[ "${file_name}" == "${file_name_test }" ]]; then
             echo "---------------inpom=-------------------"
