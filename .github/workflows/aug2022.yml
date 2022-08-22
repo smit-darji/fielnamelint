@@ -29,6 +29,7 @@ jobs:
         - name: Echo python files to scan
           run: |
             echo ${{ needs.changedFilesList.outputs.changedfile }}
+            echo ${changedfile[@]} 
 
         - name: Checkout
           uses: actions/checkout@v2
@@ -40,6 +41,7 @@ jobs:
           env:
             CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfile }}
           run: |
+                
                 echo ${CHANGED_FILES}
                 echo "Arr ${CHANGED_FILES[@]}"
                 chmod +x PUBLIC/script.sh
