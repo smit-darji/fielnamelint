@@ -39,6 +39,7 @@ done
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
     for fileignore in "${file_names_to_ignore[@]}"; do
+        echo "${file_name}"
         if [[ "${file_name}" == "${fileignore}" ]]; then 
             echo "${file_name}"
             continue
