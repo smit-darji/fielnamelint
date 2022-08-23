@@ -38,19 +38,19 @@ done
 invalid_file_names=()
 fileValidator=[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$
 for file_name in "${unique_file_names[@]}"; do
-    for fileignore in "${file_names_to_ignore[@]}"; do
+
         # echo "file name is :${file_name}"
         # echo "Ignore: ${fileignore}"
         # if [[ "${file_name}" == "${fileignore}" ]]; then 
         #     echo "in contine: ${file_name}"
         #     continue
         #     echo "continue"
-        if [[${file_name} != ${fileValidator} ]]]; then
+        if [[${file_name} != ${fileValidator} ]]; then
             invalid_file_names+=(${file_name})            
             echo "Invalid FileName : ${file_name}"
             exit 1
         fi
-    done
+
 done
 if [[ ! -z "$invalid_dirs" || ! -z "$invalid_file_names" ]]; 
     then
