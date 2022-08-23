@@ -18,7 +18,7 @@ unique_file_names=()
 for i in "${!arr[@]}"; do
     if [[ ! " ${file_names_to_ignore[*]} " =~ " ${arr[i]##*/} " ]]; then
         echo "-------------"
-        echo "${arr[i]##*/}"
+        echo "unique${arr[i]##*/}"
         unique_file_names+=(${arr[i]##*/})
     fi
     IFS='/' read -ra path <<< "${arr[i]%/*}/"
