@@ -43,7 +43,6 @@ jobs:
                 echo "----------------------------"
                 echo "${changedf[@]}"
                 echo "----------------------------"
-                echo "in run"
                 chmod +x PUBLIC/script.sh
                 PUBLIC/script.sh
                 
