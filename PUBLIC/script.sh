@@ -28,13 +28,10 @@ for i in "${!arr[@]}"; do
     done
 done
 invalid_dirs=()
-dirvalidation=^[A-Z0-9._]*$
-echo "dir regex is :${dirvalidation}"
-echo "uniq Dir is ${unique_dirs[@]}"
 
 for dir in "${unique_dirs[@]}"; do
     echo "dir is : ${dir}" 
-    if [[ ! "${dir}" =~ "${dirvalidation}"]]; then
+    if [[ ! "${dir}" =~ "^[A-Z0-9._]*$"]]; then
         echo "invalid Dir: ${dir}"
         invalid_dirs+=(${dir}) 
         
