@@ -23,16 +23,16 @@ for i in "${!arr[@]}"; do
     IFS='/' read -ra path <<< "${arr[i]%/*}/"
     for i in "${path[@]}"; do
         if [[ ! " ${unique_dirs[*]} " =~ " ${i} " ]]; then
-            echo "==========="
-            echo "${i}"
             unique_dirs+=(${i})
         fi
     done
 done
 invalid_dirs=()
+dirvalidation=^[A-Z0-9._]*$
+echo "dir regex is :${dirvalidation}"
 for dir in "${unique_dirs[@]}"; do
     echo "dir is : ${dir}" 
-    if [[ ! "${dir}" =~ ^[A-Z0-9._]*$ ]]; then
+    if [[ ! "${dir}" =~ "${dirvalidation}"]]; then
         invalid_dirs+=(${dir}) 
     fi
 done  
