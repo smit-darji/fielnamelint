@@ -31,7 +31,7 @@ invalid_dirs=()
 
 for dir in "${unique_dirs[@]}"; do
     echo "dir is : ${dir}" 
-    if [[ ! "${dir}" =~ "^[A-Z0-9._]*$"]]; then
+    if [[ ! "${dir}" =~ "^[A-Z0-9._]*$" ]]; then
         echo "invalid Dir: ${dir}"
         invalid_dirs+=(${dir}) 
         
