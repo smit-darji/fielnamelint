@@ -34,6 +34,7 @@ for dir in "${unique_dirs[@]}"; do
     echo "dir is : ${dir}" 
     if [[ ! "${dir}" =~ "${dirvalidation}"]]; then
         invalid_dirs+=(${dir}) 
+        echo "invalid Dir: ${dir}"
     fi
 done  
 # invalid_file_names=()
