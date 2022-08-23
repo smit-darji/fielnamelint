@@ -39,7 +39,9 @@ jobs:
           env:
             CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedFiles }}
           run: |
-                echo {changedf[@]}
+                changedf=(${{ needs.changedFilesList.outputs.changedFiles }})
+                echo "{changedf[@]}"
+                echo "in run"
                 chmod +x PUBLIC/script.sh
                 PUBLIC/script.sh
                 
