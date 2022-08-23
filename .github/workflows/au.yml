@@ -40,7 +40,7 @@ jobs:
             CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedFiles }}
           run: |
 
-                chmod +x PUBLIC/script.sh
-                PUBLIC/script.sh
+                chmod +x PUBLIC/1234_YOGESH_SCRIPT.sh
+                PUBLIC/1234_YOGESH_SCRIPT.sh
                 
           shell: bash
