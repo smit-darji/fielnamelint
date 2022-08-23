@@ -1,13 +1,14 @@
 echo "changefile first in sh "
 echo "----------------------------"
-echo "in first SH ${changedf[@]}"
+echo "$CHANGED_FILES"
 echo "----------------------------"
 echo "$CHANGED_FILES"
 arr=($CHANGED_FILES)
 echo "${arr[@]}"
 echo "-----------------------"
 echo ${CHANGED_FILES[@]}
-echo "-----------------------"echo "$CHANGED_FILES"
+echo "-----------------------"
+echo "$CHANGED_FILES"
 echo "-----------------------"
 echo "arry is :${arr[@]}"
 echo "-----------------------"
