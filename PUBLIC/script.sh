@@ -35,29 +35,36 @@ for dir in "${unique_dirs[@]}"; do
         exit 1
     fi
 done
-# invalid_file_names=()
-# for file_name in "${unique_file_names[@]}"; do
-#     if [[ ! " ${file_names_to_ignore[*]} " =~ " ${arr[i]##*/} " ]]; then
-#         exit 0                           
-#     fi
-#     if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
-#         invalid_file_names+=(${file_name})
-#         echo ${file_name}
-#     fi
-# done 
-# if [[ ! -z "$invalid_dirs" || ! -z "$invalid_file_names" ]]; 
-#     then
-#         echo "Failed!!"
-#         if [[ ! -z "$invalid_dirs" ]]; then
-#             echo "Invalid Directory Names"
-#             echo "${invalid_dirs[@]}"
-#         fi 
-#         if [[ ! -z "$invalid_file_names" ]]; then
-#             echo "Invalid File Names"
-#             echo "${invalid_file_names[@]}"
-#         fi
-#         exit 1
-#     else
-#         echo "Success!!"
-#         exit 0
-# fi
+invalid_file_names=()
+fileValidator=[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$
+for file_name in "${unique_file_names[@]}"; do
+    for fileignore in "${file_names_to_ignore[@]}"; do
+        # echo "file name is :${file_name}"
+        # echo "Ignore: ${fileignore}"
+        # if [[ "${file_name}" == "${fileignore}" ]]; then 
+        #     echo "in contine: ${file_name}"
+        #     continue
+        #     echo "continue"
+        echo "filename: ${file_name}"
+        echo "fileig: ${fileignore}"
+        if [[${file_name} != ${fileValidator} ] && [ ${file_name} != ${fileignore} ]]; then
+            invalid_file_names+=(${file_name})            
+            echo "Invalid FileName : ${file_name}"
+            exit 1
+        fi
+    done
+done
+if [[ ! -z "$invalid_dirs" || ! -z "$invalid_file_names" ]]; 
+    then
+        echo "Failed!!"
+        if [[ ! -z "$invalid_dirs" ]]; then
+            echo "Invalid Directory Names"
+            echo "${invalid_dirs[@]}"
+        fi
+        if [[ ! -z "$invalid_file_names" ]]; then
+            echo "Invalid File Names"
+            echo "${invalid_file_names[@]}"
+        fi
+    else
+        echo "Success!!"
+fi
