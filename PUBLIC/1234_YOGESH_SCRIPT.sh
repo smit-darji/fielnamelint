@@ -17,7 +17,7 @@ unique_dirs=()
 unique_file_names=()
 for i in "${!arr[@]}"; do
     if [[ ! " ${file_names_to_ignore[*]} " =~ " ${arr[i]##*/} " ]]; then
-        # echo "unique :${arr[i]##*/}"
+        echo "unique :${arr[i]##*/}"
         unique_file_names+=(${arr[i]##*/})
     fi
     IFS='/' read -ra path <<< "${arr[i]%/*}/"
@@ -38,11 +38,13 @@ done
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
     echo "file name is :${file_name}"
-    if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
-        
-        invalid_file_names+=(${file_name}) 
-        echo "Invalid FileName : ${file_name}"
-        exit 1
+    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${CHANGED_FILES_ARR[i]##*/} " ]]; then
+        if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
+
+            invalid_file_names+=(${file_name}) 
+            echo "Invalid FileName : ${file_name}"
+            exit 1
+        fi
     fi
 done
 
