@@ -28,16 +28,13 @@ for i in "${!arr[@]}"; do
     done
 done
 invalid_dirs=()
-
 for dir in "${unique_dirs[@]}"; do
-    echo "dir is : ${dir}" 
-    if [[ ! "${dir}" =~ "^[A-Z0-9._]*$" ]]; then
-        echo "invalid Dir: ${dir}"
-        exit 1
+    if [[ ! "${dir}" =~ ^[A-Z0-9._]*$ ]]; then
         invalid_dirs+=(${dir}) 
-        
+        echo "Invalid Dirrectory Name ${dir}"
+        exit 1
     fi
-done  
+done
 # invalid_file_names=()
 # for file_name in "${unique_file_names[@]}"; do
 #     if [[ ! " ${file_names_to_ignore[*]} " =~ " ${arr[i]##*/} " ]]; then
