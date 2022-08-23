@@ -30,6 +30,7 @@ done
 invalid_dirs=()
 dirvalidation=^[A-Z0-9._]*$
 echo "dir regex is :${dirvalidation}"
+echo "uniq Dir is ${unique_dirs[@]}"
 
 for dir in "${unique_dirs[@]}"; do
     echo "dir is : ${dir}" 
