@@ -1,35 +1,27 @@
-echo "changefile first in sh "
-echo "----------------------------"
-echo "$CHANGED_FILES"
-echo "----------------------------"
 echo "$CHANGED_FILES"
 arr=($CHANGED_FILES)
 echo "${arr[@]}"
 echo "-----------------------"
-echo ${CHANGED_FILES[@]}
-echo "-----------------------"
-echo "$CHANGED_FILES"
-echo "-----------------------"
 echo "arry is :${arr[@]}"
 echo "-----------------------"
 file_names_to_ignore=("changelog.xml", "pom.xml", "ReadMe.md")
-for i in "${!CHANGED_FILES[@]}"; do
+for i in "${!arr[@]}"; do
     echo "========="
-    echo "${CHANGED_FILES[i]}"
-    if [[ "${CHANGED_FILES[i]}" == .github* ]]; then
-        unset 'CHANGED_FILES[i]'
-        echo "${CHANGED_FILES[i]}"
+    echo "${arr[i]}"
+    if [[ "${arr[i]}" == .github* ]]; then
+        unset 'arr[i]'
+        echo "${arr[i]}"
     fi
 done
 unique_dirs=()
 unique_file_names=()
-for i in "${!CHANGED_FILES[@]}"; do
-    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${CHANGED_FILES[i]##*/} " ]]; then
+for i in "${!arr[@]}"; do
+    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${arr[i]##*/} " ]]; then
         echo "-------------"
-        echo "${CHANGED_FILES[i]##*/}"
-        unique_file_names+=(${CHANGED_FILES[i]##*/})
+        echo "${arr[i]##*/}"
+        unique_file_names+=(${arr[i]##*/})
     fi
-    IFS='/' read -ra path <<< "${CHANGED_FILES[i]%/*}/"
+    IFS='/' read -ra path <<< "${arr[i]%/*}/"
     for i in "${path[@]}"; do
         if [[ ! " ${unique_dirs[*]} " =~ " ${i} " ]]; then
             echo "==========="
@@ -46,7 +38,7 @@ for dir in "${unique_dirs[@]}"; do
 done  
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
-    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${CHANGED_FILES[i]##*/} " ]]; then
+    if [[ ! " ${file_names_to_ignore[*]} " =~ " ${arr[i]##*/} " ]]; then
         exit 0                           
     fi
     if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
