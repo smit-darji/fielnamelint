@@ -11,7 +11,7 @@ print("-------------------------Declare Variables ------------------------------
 file_names_to_ignore = ["README.md", ".gitignore"]
 
 
-CHANGED_FILE_LIST = ['./.github/workflows/test.yml', './.gitignore', './1234_YOGESH_TEST_12T.py', './ABCD/1234_YOGESH_TEST_12T.txt', './Terraform/1234_YOGESH_TEST_12T.txt']
+# CHANGED_FILE_LIST = ['./.github/workflows/test.yml', './.gitignore', './1234_YOGESH_TEST_12T.py', './ABCD/1234_YOGESH_TEST_12T.txt', './Terraform/1234_YOGESH_TEST_12T.txt']
 directory_names_to_ignore_completely = [".github", "Terraform"]
 print("CHANGED_FILE_LIST is :: ", CHANGED_FILE_LIST)
 print("-------------------Changed File-----------------------------")
