@@ -4,6 +4,7 @@ from itertools import filterfalse
 
 CHANGED_FILES_ARR = (os.environ.get('CHANGED_FILES'))
 CHANGED_FILE_LIST = CHANGED_FILES_ARR.split(" ")
+print("CHANGED_FILE_LIST :", CHANGED_FILE_LIST)
 file_names_to_ignore = ["README.md", ".gitignore"]
 # CHANGED_FILE_LIST = ['./.github/workflows/1.yml', './.github/workflows/script/file_name_validation.sh', './.github/workflows/test.yml', './1234_YOGESH_TEST_12T.py', './ABCD/1234_YOGESH_TEST_12T.txt']
 
