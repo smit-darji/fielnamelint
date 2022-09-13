@@ -42,9 +42,7 @@ for file_name in Unique_File_Name_Only:
     else:
         print(file_name)
         file_name_list.append(file_name)
-        print(type(invalid_file_names))
-        print(type(file_name_list))
         invalid_file_names = invalid_file_names + file_name_list
         print("invalid File Name: ", invalid_file_names)
-        exit(0)
+        exit(1)
 
