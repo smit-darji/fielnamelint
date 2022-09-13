@@ -11,7 +11,6 @@ jobs:
         steps:
             - name: step-1
               run: |
-                pip install os
                 echo "${PUBLICENV}"
                 ls
                 pwd
