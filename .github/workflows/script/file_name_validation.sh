@@ -28,7 +28,7 @@ for i in "${!CHANGED_FILES_ARR[@]}"; do
     fi
 
 done
-
+echo "Unique FIle list :"$unique_file_names
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
     echo $file_name
