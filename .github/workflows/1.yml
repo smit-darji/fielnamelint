@@ -1,0 +1,10 @@
+name: File name lint validation
+on: pull_request
+
+jobs:  
+  changedFilesList: # Job that list changed files
+    runs-on: ubuntu-latest
+    env:
+        HP_FINAL_EPOCHS: "50"
+        HP_FINAL_LR: "0.1"
+        
