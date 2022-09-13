@@ -1,6 +1,6 @@
 # Getting Environment variable named CHANGED_FILES and storing it as an array named CHANGED_FILES_ARR
 CHANGED_FILES_ARR=($CHANGED_FILES)
-echo "in Sh fule"$CHANGED_FILES_ARR
+
 
 # List of file names and directory names which will be ignored while validating
 file_names_to_ignore=("README.md", ".gitignore")
@@ -10,6 +10,9 @@ directory_names_to_ignore_completely=(".github")
 
 # Removing file of .github directory as we don't want to run validations on them
 for i in "${!CHANGED_FILES_ARR[@]}"; do
+    echo "i is : "$i
+    echo "change file is :" ${!CHANGED_FILES_ARR[@]}
+
     for j in "${!directory_names_to_ignore_completely[@]}"; do
         if [[ "${CHANGED_FILES_ARR[i]}" == "./${directory_names_to_ignore_completely[j]}/"* ]]; then
             unset 'CHANGED_FILES_ARR[i]'
