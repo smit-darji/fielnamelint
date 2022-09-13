@@ -12,6 +12,7 @@ file_names_to_ignore = ["README.md", ".gitignore"]
 
 
 # CHANGED_FILE_LIST = ['./.github/workflows/test.yml', './.gitignore', './1234_YOGESH_TEST_12T.py', './ABCD/1234_YOGESH_TEST_12T.txt', './Terraform/1234_YOGESH_TEST_12T.txt']
+
 directory_names_to_ignore_completely = [".github", "Terraform"]
 print("CHANGED_FILE_LIST is :: ", CHANGED_FILE_LIST)
 print("-------------------Changed File-----------------------------")
@@ -32,12 +33,17 @@ for i in CHANGED_FILE_LIST:
 print("-------------------Invalid File-----------------------------")
 
 invalid_file_names=[]
+file_name_list=[]
 for file_name in Unique_File_Name_Only:
     match = re.search("[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$", file_name)
     if match:
         print("valid Filename:",file_name)
     else:
-        invalid_file_names = invalid_file_names + file_name
+        print(file_name)
+        file_name_list.append(file_name)
+        print(type(invalid_file_names))
+        print(type(file_name_list))
+        invalid_file_names = invalid_file_names + file_name_list
         print("invalid File Name: ", invalid_file_names)
         exit(0)
 
