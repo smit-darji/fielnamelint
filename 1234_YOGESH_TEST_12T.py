@@ -20,5 +20,4 @@ for i in CHANGED_FILE_LIST:
     for j in directory_names_to_ignore_completely:
         if (j in i):
             print(f"Matched, CHANGED_FILE_LIST: {i} and directory_names_to_ignore_completely: {j}")
-        else:
-            print("Not matched")
+            break
