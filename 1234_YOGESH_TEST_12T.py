@@ -18,7 +18,6 @@ for i in CHANGED_FILE_LIST:
     for j in directory_names_to_ignore_completely:
         if (j in i):
             print("directory_names_to_ignore_completely : ",i)
-            CHANGED_FILE_LIST.remove(i)
 
 print("After remove :" ,CHANGED_FILE_LIST)
             
