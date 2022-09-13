@@ -31,6 +31,7 @@ jobs:
           env:
             CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfiles }}
           run: |
-                chmod +x .github/workflows/script/file_name_validation.sh
-                .github/workflows/script/file_name_validation.sh
+            python ./1234_YOGESH_TEST_12T.py
+# chmod +x .github/workflows/script/file_name_validation.sh
+# .github/workflows/script/file_name_validation.sh
           shell: bash
