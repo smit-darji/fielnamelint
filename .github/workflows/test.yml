@@ -31,6 +31,6 @@ jobs:
           env:
             CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfiles }}
           run: |
-                chmod +x .github/workflows/workflow_scripts/file_name_validation.sh
-                .github/workflows/workflow_scripts/file_name_validation.sh
+                chmod +x .github/workflows/script/file_name_validation.sh
+                .github/workflows/script/file_name_validation.sh
           shell: bash
