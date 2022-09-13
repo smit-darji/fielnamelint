@@ -1,10 +1,19 @@
-name: File name lint validation
-on: pull_request
+name: workflow-level-custom-environment-variables
 
-jobs:  
-  changedFilesList: # Job that list changed files
-    runs-on: ubuntu-latest
-    env:
-        HP_FINAL_EPOCHS: "50"
-        HP_FINAL_LR: "0.1"
+on: [push]
+# Here the environment variable is declared in workflow level
+env:
+    PUBLICENV: "fromWorkflow"
+
+jobs:
+    sample-job-1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: step-1
+              run: |
+                pip install os
+                echo "${PUBLICENV}"
+                ls
+                pwd
+            # This will echo the value/string of PUBLICENV
         
