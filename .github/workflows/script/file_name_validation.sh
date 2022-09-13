@@ -10,6 +10,7 @@ directory_names_to_ignore_completely=(".github")
 # Removing file of .github directory as we don't want to run validations on them
 for i in "${!CHANGED_FILES_ARR[@]}"; do
     for j in "${!directory_names_to_ignore_completely[@]}"; do
+        echo "directory_names_to_ignore_completely issssssssssss:::::"${!directory_names_to_ignore_completely[@]}
         if [[ "${CHANGED_FILES_ARR[i]}" == "./${directory_names_to_ignore_completely[j]}/"* ]]; then
             echo "........"${CHANGED_FILES_ARR[i]}
             unset 'CHANGED_FILES_ARR[i]'
