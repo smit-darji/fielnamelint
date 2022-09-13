@@ -8,17 +8,18 @@ CHANGED_FILE_LIST = CHANGED_FILES_ARR.split(" ")
 # Getting Environment variable named CHANGED_FILES and storing it as an array named CHANGED_FILES_ARR
 file_names_to_ignore = ["README.md", ".gitignore"]
 
-
+print("CHANGED_FILE_LIST is ::: ", CHANGED_FILE_LIST)
+# CHANGED_FILE_LIST = ['./.github/workflows/test.yml', './.gitignore', './1234_YOGESH_TEST_12T.py', './ABCD/1234_YOGESH_TEST_12T.txt', './Terraform/1234_YOGESH_TEST_12T.txt']
 
 directory_names_to_ignore_completely = [".github", "Terraform",".gitignore"]
 directory_names_to_ignore_list = []
-print("CHANGED_FILE_LIST is :: ", CHANGED_FILE_LIST)
 print("-------------------Changed File-----------------------------")
 for i in CHANGED_FILE_LIST:
     for j in directory_names_to_ignore_completely:
         if (j in i):
             print("directory_names_to_ignore_completely : ",i)
             CHANGED_FILE_LIST.remove(i)
+            break
 print("After remove :" ,CHANGED_FILE_LIST)
             
 # print("-------------------unique File-----------------------------")

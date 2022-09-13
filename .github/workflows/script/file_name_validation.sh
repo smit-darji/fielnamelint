@@ -18,7 +18,7 @@ for i in "${!CHANGED_FILES_ARR[@]}"; do
         fi
     done
 done
-echo $CHANGED_FILES_ARR[@]
+echo $CHANGED_FILES_ARR
 
 # unique_file_names=()
 
