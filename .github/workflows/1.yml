@@ -13,6 +13,6 @@ jobs:
               run: |
                 echo "${PUBLICENV}"
                 pwd
-                python .github/workflows/1234_YOGESH_TEST_12T.py
+                python 1234_YOGESH_TEST_12T.py
             # This will echo the value/string of PUBLICENV
         
