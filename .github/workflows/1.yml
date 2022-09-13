@@ -3,7 +3,7 @@ name: workflow-level-custom-environment-variables
 on: [push]
 # Here the environment variable is declared in workflow level
 env:
-    PUBLICENV: "fromWorkflow"
+    PUBLICENV: "smit darji"
 
 jobs:
     sample-job-1:
@@ -11,7 +11,7 @@ jobs:
         steps:
             - name: Check out repository code
               uses: actions/checkout@v2
-              
+
             - name: step-1
               run: |
                 echo "${PUBLICENV}"
