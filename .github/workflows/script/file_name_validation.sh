@@ -15,6 +15,7 @@ for i in "${!CHANGED_FILES_ARR[@]}"; do
         echo "i is : "$i
         echo "j is :"$j
         if [[ "${CHANGED_FILES_ARR[i]}" == "./${directory_names_to_ignore_completely[j]}/"* ]]; then
+            echo "unset is ::: "$CHANGED_FILES_ARR[i]
             unset 'CHANGED_FILES_ARR[i]'
             break
         fi

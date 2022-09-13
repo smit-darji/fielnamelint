@@ -24,8 +24,10 @@ CHANGED_FILE_LIST = CHANGED_FILES_ARR.split(" ")
 print("type is : temp: ",type(CHANGED_FILE_LIST))
 for i in CHANGED_FILE_LIST:
     for j in directory_names_to_ignore_completely:
-        print("oi   is ",i)
+        print("i   is ",i)
         print("j is: ", j)
+        if (CHANGED_FILES_ARR == "./{directory_names_to_ignore_completely}/*")
+            
 
 
 # for i in "${!CHANGED_FILES_ARR[@]}"; do
