@@ -1,6 +1,6 @@
 import os
 
-print ("hello")
-hp_final_epochs = (os.environ.get('PUBLICENV'))
+print ("-------------------------In Python File ---------------------------------------")
+CHANGED_FILES_ARR = (os.environ.get('PUBLICENV'))
 
-print("from python",hp_final_epochs)
+print("Arrys is", CHANGED_FILES_ARR)
