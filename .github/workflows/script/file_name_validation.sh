@@ -25,8 +25,6 @@ for i in "${!CHANGED_FILES_ARR[@]}"; do
     # Extracting unique file names
     if [[ ! "${unique_file_names[*]}" =~ "${CHANGED_FILES_ARR[i]##*/}" && ! "${file_names_to_ignore[*]}" =~ "${CHANGED_FILES_ARR[i]##*/}" ]]; then
         unique_file_names+=(${CHANGED_FILES_ARR[i]##*/})
-        echo "Qniqueeeeeeeeeeeeeeeee"${CHANGED_FILES_ARR[i]##*/}
-        echo "unique_file_names"$unique_file_names
     fi
 
 done

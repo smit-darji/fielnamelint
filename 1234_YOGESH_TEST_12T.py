@@ -1,8 +1,10 @@
-# import os
+import re
+import os
 
-# print ("-------------------------In Python File ---------------------------------------")
-# CHANGED_FILES_ARR = (os.environ.get('CHANGED_FILES'))
-# CHANGED_FILE_LIST = CHANGED_FILES_ARR.split(" ")
+
+print ("-------------------------In Python File ---------------------------------------")
+CHANGED_FILES_ARR = (os.environ.get('CHANGED_FILES'))
+CHANGED_FILE_LIST = CHANGED_FILES_ARR.split(" ")
 # Getting Environment variable named CHANGED_FILES and storing it as an array named CHANGED_FILES_ARR
 
 print("-------------------------Declare Variables ---------------------------------------")
@@ -21,17 +23,21 @@ for i in CHANGED_FILE_LIST:
 print("-------------------unique File-----------------------------")
 unique_file_names=[]
 for i in CHANGED_FILE_LIST:
-    if (unique_file_names != "{CHANGED_FILE_LIST}##*/" and file_names_to_ignore != CHANGED_FILE_LIST):
+    if (unique_file_names != CHANGED_FILE_LIST and file_names_to_ignore != CHANGED_FILE_LIST):
         unique_file_names = unique_file_names+CHANGED_FILE_LIST
-        print("Unique FileName",unique_file_names)
+        Unique_File_Name_Only=[]
+        for i in unique_file_names:
+            Unique_File_Name_Only.append(i.split('/')[-1])
+        print("Unique FileName",Unique_File_Name_Only)
 print("-------------------Invalid File-----------------------------")
-# invalid_file_names=()
-# for file_name in "${unique_file_names[@]}"; do
-#     # Creating list of invalid file names
-#     if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
-#         invalid_file_names+=(${file_name})
-#     fi
-# done 
+
 invalid_file_names=[]
-for fine_name in unique_file_names:
-    print("file Name is :: ",fine_name)
+for file_name in Unique_File_Name_Only:
+    match = re.search("[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$", file_name)
+    if match:
+        print("valid Filename:",file_name)
+    else:
+        invalid_file_names = invalid_file_names + file_name
+        print("invalid File Name: ", invalid_file_names)
+        exit(0)
+
