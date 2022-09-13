@@ -24,11 +24,11 @@ CHANGED_FILE_LIST = CHANGED_FILES_ARR.split(" ")
 print("type is : temp: ",type(CHANGED_FILE_LIST))
 for i in CHANGED_FILE_LIST:
     for j in directory_names_to_ignore_completely:
-        print("i   is ",CHANGED_FILES_ARR[i])
+        print("i   is ",CHANGED_FILE_LIST[i])
         print("j is: ",directory_names_to_ignore_completely[j])
         if CHANGED_FILE_LIST == "{directory_names_to_ignore_completely}":
             print("in if")
-            print(CHANGED_FILES_ARR[i])
+            print(CHANGED_FILE_LIST[i])
         else:
             print("in else")
 
