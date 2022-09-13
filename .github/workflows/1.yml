@@ -9,6 +9,9 @@ jobs:
     sample-job-1:
         runs-on: ubuntu-latest
         steps:
+            - name: Check out repository code
+              uses: actions/checkout@v2
+              
             - name: step-1
               run: |
                 echo "${PUBLICENV}"
