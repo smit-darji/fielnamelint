@@ -20,8 +20,8 @@ print ("-------------------------Removing file of .github directory-------------
 
 # Removing file of .github directory as we don't want to run validations on them
 for i in CHANGED_FILES_ARR:
-    print(i)
-    print(CHANGED_FILES_ARR)
+    print("iis: ",i)
+
 
 
 # for i in "${!CHANGED_FILES_ARR[@]}"; do
