@@ -26,8 +26,10 @@ for i in CHANGED_FILE_LIST:
     for j in directory_names_to_ignore_completely:
         print("i   is ",i)
         print("j is: ", j)
-        if (CHANGED_FILES_ARR == "./{directory_names_to_ignore_completely}/*")
+        if CHANGED_FILE_LIST == directory_names_to_ignore_completely:
             print("in if")
+        
+
 
 
 
