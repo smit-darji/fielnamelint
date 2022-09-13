@@ -2,14 +2,10 @@ import re
 import os
 from itertools import filterfalse
 
-
-# print ("-------------------------In Python File ---------------------------------------")
 CHANGED_FILES_ARR = (os.environ.get('CHANGED_FILES'))
 CHANGED_FILE_LIST = CHANGED_FILES_ARR.split(" ")
-# Getting Environment variable named CHANGED_FILES and storing it as an array named CHANGED_FILES_ARR
 file_names_to_ignore = ["README.md", ".gitignore"]
 # CHANGED_FILE_LIST = ['./.github/workflows/1.yml', './.github/workflows/script/file_name_validation.sh', './.github/workflows/test.yml', './1234_YOGESH_TEST_12T.py', './ABCD/1234_YOGESH_TEST_12T.txt']
-
 
 directory_names_to_ignore_completely = [".github", "Terraform",".gitignore"]
 directory_names_to_ignore_list = []
