@@ -27,7 +27,8 @@ for i in CHANGED_FILE_LIST:
         print("i   is ",i)
         print("j is: ", j)
         if (CHANGED_FILES_ARR == "./{directory_names_to_ignore_completely}/*")
-            
+            print("in if")
+
 
 
 # for i in "${!CHANGED_FILES_ARR[@]}"; do

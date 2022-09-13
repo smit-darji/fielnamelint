@@ -1,6 +1,5 @@
 # Getting Environment variable named CHANGED_FILES and storing it as an array named CHANGED_FILES_ARR
 CHANGED_FILES_ARR=($CHANGED_FILES)
-
 # List of file names and directory names which will be ignored while validating
 file_names_to_ignore=("README.md", ".gitignore")
 
