@@ -18,7 +18,6 @@ REMOVE_DIR_NAME_LIST=[]
 for i in CHANGED_FILE_LIST:
     for j in directory_names_to_ignore_completely:
         if (j in i):
-            print("directory_names_to_ignore_completely : ",i)
             REMOVE_DIR_NAME_LIST.append(i)
 
 print("Remove Directory. ",REMOVE_DIR_NAME_LIST)
