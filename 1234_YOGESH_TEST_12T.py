@@ -1,30 +1,29 @@
 import re
-# import os
+import os
 
 
-# print ("-------------------------In Python File ---------------------------------------")
-# CHANGED_FILES_ARR = (os.environ.get('CHANGED_FILES'))
-# CHANGED_FILE_LIST = CHANGED_FILES_ARR.split(" ")
+print ("-------------------------In Python File ---------------------------------------")
+CHANGED_FILES_ARR = (os.environ.get('CHANGED_FILES'))
+CHANGED_FILE_LIST = CHANGED_FILES_ARR.split(" ")
 # Getting Environment variable named CHANGED_FILES and storing it as an array named CHANGED_FILES_ARR
 file_names_to_ignore = ["README.md", ".gitignore"]
 
 
-CHANGED_FILE_LIST = ['./.github/workflows/test.yml', './.gitignore', './1234_YOGESH_TEST_12T.py', './ABCD/1234_YOGESH_TEST_12T.txt', './Terraform/1234_YOGESH_TEST_12T.txt']
 
-directory_names_to_ignore_completely = [".github", "Terraform"]
+directory_names_to_ignore_completely = [".github", "Terraform",".gitignore"]
 directory_names_to_ignore_list = []
 print("CHANGED_FILE_LIST is :: ", CHANGED_FILE_LIST)
 print("-------------------Changed File-----------------------------")
 for i in CHANGED_FILE_LIST:
     for j in directory_names_to_ignore_completely:
         if (j in i):
-            directory_names_to_ignore_list.append(i)
-            print("directory_names_to_ignore_completely : ",directory_names_to_ignore_list)
+            print("directory_names_to_ignore_completely : ",i)
+            CHANGED_FILE_LIST.remove(i)
+print("After remove :" ,CHANGED_FILE_LIST)
             
 # print("-------------------unique File-----------------------------")
 # unique_file_names=[]
 # for i in CHANGED_FILE_LIST:
-#     print("i is :", i)
 #     if (i in CHANGED_FILE_LIST ):
 #         print("i is in if " ,i)
 #         unique_file_names = unique_file_names+CHANGED_FILE_LIST
