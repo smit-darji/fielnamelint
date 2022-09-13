@@ -29,7 +29,5 @@ print("type is : temp: ",type(CHANGED_FILE_LIST))
 for i in CHANGED_FILE_LIST:
     print("i is ", CHANGED_FILE_LIST)
     print(type(CHANGED_FILE_LIST))
-
-
-
-
+    for j in directory_names_to_ignore_completely:
+        print("j is ", directory_names_to_ignore_completely)
