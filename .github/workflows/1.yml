@@ -1,21 +1,21 @@
-name: workflow-level-custom-environment-variables
+# name: workflow-level-custom-environment-variables
 
-on: [push]
-# Here the environment variable is declared in workflow level
-env:
-    PUBLICENV: "smit darji"
+# on: [push]
+# # Here the environment variable is declared in workflow level
+# env:
+#     PUBLICENV: "smit darji"
 
-jobs:
-    sample-job-1:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Check out repository code
-              uses: actions/checkout@v2
+# jobs:
+#     sample-job-1:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: Check out repository code
+#               uses: actions/checkout@v2
 
-            - name: step-1
-              run: |
-                echo "${PUBLICENV}"
-                pwd
-                python ./1234_YOGESH_TEST_12T.py
-            # This will echo the value/string of PUBLICENV
+#             - name: step-1
+#               run: |
+#                 echo "${PUBLICENV}"
+#                 pwd
+#                 python ./1234_YOGESH_TEST_12T.py
+#             # This will echo the value/string of PUBLICENV
         
