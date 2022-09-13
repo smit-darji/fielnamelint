@@ -11,7 +11,7 @@ print ("-------------------------Declare Variables -----------------------------
 file_names_to_ignore = ("README.md", ".gitignore")
 
 # All files will be ignored inside of this direcories
-directory_names_to_ignore_completely = (".github")
+directory_names_to_ignore_completely = (".github" ".gitignore")
 
 print("file_names_to_ignore is :::", file_names_to_ignore)
 print("directory_names_to_ignore_completely ::", directory_names_to_ignore_completely)
@@ -26,7 +26,7 @@ for i in CHANGED_FILE_LIST:
     for j in directory_names_to_ignore_completely:
         print("i   is ",CHANGED_FILE_LIST)
         print("j is: ",directory_names_to_ignore_completely)
-        if CHANGED_FILE_LIST == "{directory_names_to_ignore_completely}":
+        if CHANGED_FILE_LIST == directory_names_to_ignore_completely:
             print("in if")
             print(CHANGED_FILE_LIST)
         else:
