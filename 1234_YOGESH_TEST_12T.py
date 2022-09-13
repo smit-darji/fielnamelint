@@ -24,29 +24,29 @@ for i in CHANGED_FILE_LIST:
 CHANGED_FILE_LIST = [i for i in CHANGED_FILE_LIST if i not in REMOVE_DIR_NAME_LIST]
 print("REs is :", str(CHANGED_FILE_LIST))
 # print("-------------------unique File-----------------------------")
-# unique_file_names=[]
-# for i in CHANGED_FILE_LIST:
-#     if (i in CHANGED_FILE_LIST ):
-#         print("i is in if " ,i)
-#         unique_file_names = unique_file_names+CHANGED_FILE_LIST
-#         Unique_File_Name_Only=[]
-#         for i in unique_file_names:
-#             Unique_File_Name_Only.append(i.split('/')[-1])
-#         print("Unique FileName",Unique_File_Name_Only)
-# print("-------------------Invalid File-----------------------------")
+unique_file_names=[]
+for i in CHANGED_FILE_LIST:
+    if (i in CHANGED_FILE_LIST ):
+        print("i is in if " ,i)
+        unique_file_names = unique_file_names+CHANGED_FILE_LIST
+        Unique_File_Name_Only=[]
+        for i in unique_file_names:
+            Unique_File_Name_Only.append(i.split('/')[-1])
+        print("Unique FileName",Unique_File_Name_Only)
+print("-------------------Invalid File-----------------------------")
 
-# invalid_file_names=[]
-# file_name_list=[]
-# for file_name in Unique_File_Name_Only:
-#     match = re.search("[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$", file_name)
-#     if match:
-#         print("valid Filename:",file_name)
-#     else:
-#         print(file_name)
-#         file_name_list.append(file_name)
-#         print(type(invalid_file_names))
-#         print(type(file_name_list))
-#         invalid_file_names = invalid_file_names + file_name_list
-#         print("invalid File Name: ", invalid_file_names)
-#         exit(0)
+invalid_file_names=[]
+file_name_list=[]
+for file_name in Unique_File_Name_Only:
+    match = re.search("[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$", file_name)
+    if match:
+        print("valid Filename:",file_name)
+    else:
+        print(file_name)
+        file_name_list.append(file_name)
+        print(type(invalid_file_names))
+        print(type(file_name_list))
+        invalid_file_names = invalid_file_names + file_name_list
+        print("invalid File Name: ", invalid_file_names)
+        exit(0)
 
