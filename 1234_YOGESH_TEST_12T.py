@@ -18,8 +18,11 @@ print("directory_names_to_ignore_completely ::", directory_names_to_ignore_compl
 
 print ("-------------------------Removing file of .github directory---------------------------------------")
 
+print("type is :: ",type(CHANGED_FILES_ARR))
 # Removing file of .github directory as we don't want to run validations on them
-for i in CHANGED_FILES_ARR:
+temp = CHANGED_FILES_ARR.split(" ")
+print("type is : temp: ",type(temp))
+for i in temp:
     print("iis: ",i)
 
 
