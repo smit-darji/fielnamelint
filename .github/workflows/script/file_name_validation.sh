@@ -31,6 +31,7 @@ done
 
 invalid_file_names=()
 for file_name in "${unique_file_names[@]}"; do
+    echo $file_name
     # Creating list of invalid file names
     if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
         invalid_file_names+=(${file_name})
