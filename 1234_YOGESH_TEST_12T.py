@@ -24,6 +24,7 @@ for i in CHANGED_FILE_LIST:
 CHANGED_FILE_LIST = [i for i in CHANGED_FILE_LIST if i not in REMOVE_DIR_NAME_LIST]
 print("REs is :", str(CHANGED_FILE_LIST))
 # print("-------------------unique File-----------------------------")
+print(type(CHANGED_FILE_LIST))
 unique_file_names=[]
 for i in CHANGED_FILE_LIST:
     if (i in CHANGED_FILE_LIST ):
