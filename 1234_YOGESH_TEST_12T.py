@@ -20,11 +20,12 @@ print ("-------------------------Removing file of .github directory-------------
 
 print("type is :: ",type(CHANGED_FILES_ARR))
 # Removing file of .github directory as we don't want to run validations on them
-temp = CHANGED_FILES_ARR.split(" ")
-print("type is : temp: ",type(temp))
-for i in temp:
-    print("iis: ",i)
-
+CHANGED_FILE_LIST = CHANGED_FILES_ARR.split(" ")
+print("type is : temp: ",type(CHANGED_FILE_LIST))
+for i in CHANGED_FILE_LIST:
+    for j in directory_names_to_ignore_completely:
+        print("oi   is ",i)
+        print("j is: ", j)
 
 
 # for i in "${!CHANGED_FILES_ARR[@]}"; do
