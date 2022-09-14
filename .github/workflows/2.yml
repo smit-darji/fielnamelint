@@ -1,25 +1,23 @@
 name: Dependabot auto-approve
-on: pull_request_target
+on: pull_request
 permissions:
   pull-requests: write
 jobs:
-  dependabot:
+  yor-job:
     runs-on: ubuntu-latest
-    # Checking the author will prevent your Action run failing on non-Dependabot PRs
-    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' }}
     steps:
-      - name: Dependabot metadata
-        id: dependabot-metadata
-        uses: dependabot/fetch-metadata@v1.3.3
-      - uses: actions/checkout@v3
-      - name: Approve a PR if not already approved
-        run: |
-          gh pr checkout "$PR_URL" # sets the upstream metadata for `gh pr status`
-          if [ "$(gh pr status --json reviewDecision -q .currentBranch.reviewDecision)" != "APPROVED" ];
-          then gh pr review --approve "$PR_URL"
-          else echo "PR already approved, skipping additional approvals to minimize emails/notification noise.";
-          fi
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          
+      - name: Get previous workflow status
+        uses: Mercymeilya/last-workflow-status@v0.3.2
+        id: last_status
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Any action
+        run: slyle-check.sh
+
+      - name: Build fixed slack message
+        uses: rtCamp/action-slack-notify@v2.1.3
+        if: ${{ success() && steps.last_status.outputs.last_status == 'failure' }}
+        env: 
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: 'Style check fixed now!'
