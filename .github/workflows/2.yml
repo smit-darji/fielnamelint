@@ -12,8 +12,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Any action
-        run: slyle-check.sh
+      # - name: Any action
+      #   run: slyle-check.sh
 
       - name: Build fixed slack message
         uses: rtCamp/action-slack-notify@v2.1.3
