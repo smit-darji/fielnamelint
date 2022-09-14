@@ -1,45 +1,19 @@
-name: Search in project
+name: PR metadata annotation
 
-on: push
+on: 
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 jobs:
-  pull-request:
+
+  annotate-pr:
     runs-on: ubuntu-latest
+    name: Annotates pull request with metadata
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Get labels from project
-      uses: link-/PR-metadata-action@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        destination_repo: 'smit-darji/PR-metadata-action'
-        type: 'labels'
-
-    - name: Search for chartName label
-      run: |
-        CHART_NAME=$(echo ${{ steps.labels.outputs }} | jq -r -c 'map(select(.name | contains("chartName")) | .name)')
-        if [[ -z $CHART_NAME ]]; then
-          echo "ERROR: There is no label 'chartName'"
-          exit 1
-        fi
-# name: PR metadata annotation
-
-# on: 
-#   pull_request:
-#     types: [opened, reopened, synchronize]
-
-# jobs:
-
-#   annotate-pr:
-#     runs-on: ubuntu-latest
-#     name: Annotates pull request with metadata
-#     steps:
-#       - name: Annotate PR
-#         uses: link-/PR-metadata-action@main
-#         with:
-#           owner: ${{ github.repository_owner }}
-#           repo: ${{ github.event.repository.name }}
-#           pr_number: ${{ github.event.number }}
-#           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Annotate PR
+        uses: link-/PR-metadata-action@main
+        with:
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          pr_number: ${{ github.event.number }}
+          token: ${{ secrets.GITHUB_TOKEN }}
