@@ -10,7 +10,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Get labels from project
-      uses: iits-consulting/action-get-project-metadata@main
+      uses: link-/PR-metadata-action@main
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
@@ -24,3 +24,22 @@ jobs:
           echo "ERROR: There is no label 'chartName'"
           exit 1
         fi
+# name: PR metadata annotation
+
+# on: 
+#   pull_request:
+#     types: [opened, reopened, synchronize]
+
+# jobs:
+
+#   annotate-pr:
+#     runs-on: ubuntu-latest
+#     name: Annotates pull request with metadata
+#     steps:
+#       - name: Annotate PR
+#         uses: link-/PR-metadata-action@main
+#         with:
+#           owner: ${{ github.repository_owner }}
+#           repo: ${{ github.event.repository.name }}
+#           pr_number: ${{ github.event.number }}
+#           token: ${{ secrets.GITHUB_TOKEN }}
