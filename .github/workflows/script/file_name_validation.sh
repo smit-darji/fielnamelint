@@ -2,7 +2,7 @@
 CHANGED_FILES_ARR=($CHANGED_FILES)
 
 # List of file names and directory names which will be ignored while validating
-file_names_to_ignore=("README.md", ".gitignore")
+file_names_to_ignore=("README.md", "Terraform", ".gitignore")
 
 # All files will be ignored inside of this direcories
 directory_names_to_ignore_completely=(".github")
