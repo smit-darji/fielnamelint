@@ -17,9 +17,8 @@ for i in CHANGED_FILE_LIST:
         if (j in i):
             REMOVE_DIR_NAME_LIST.append(i)
 
-
 CHANGED_FILE_LIST = [i for i in CHANGED_FILE_LIST if i not in REMOVE_DIR_NAME_LIST]
-print("REs is :", str(CHANGED_FILE_LIST))
+print("CHANGED FILE LIST is :", str(CHANGED_FILE_LIST))
 # print("-------------------unique File-----------------------------")
 print(type(CHANGED_FILE_LIST))
 unique_file_names=[]
