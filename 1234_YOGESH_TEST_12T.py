@@ -6,8 +6,8 @@ CHANGED_FILES_ARR = (os.environ.get('CHANGED_FILES'))
 CHANGED_FILE_LIST = CHANGED_FILES_ARR.split(" ")
 print("CHANGED_FILE_LIST :", CHANGED_FILE_LIST)
 file_names_to_ignore = ["README.md", ".gitignore"]
-
 # CHANGED_FILE_LIST = ['./.github/workflows/1.yml', './.github/workflows/script/file_name_validation.sh', './.github/workflows/test.yml', './1234_YOGESH_TEST_12T.py', './ABCD/1234_YOGESH_TEST_12T.txt']
+
 directory_names_to_ignore_completely = [".github", "Terraform",".gitignore"]
 directory_names_to_ignore_list = []
 print("-------------------Changed File-----------------------------")
@@ -17,8 +17,9 @@ for i in CHANGED_FILE_LIST:
         if (j in i):
             REMOVE_DIR_NAME_LIST.append(i)
 
+
 CHANGED_FILE_LIST = [i for i in CHANGED_FILE_LIST if i not in REMOVE_DIR_NAME_LIST]
-print("CHANGED FILE LIST is :", str(CHANGED_FILE_LIST))
+print("REs is :", str(CHANGED_FILE_LIST))
 # print("-------------------unique File-----------------------------")
 print(type(CHANGED_FILE_LIST))
 unique_file_names=[]
@@ -44,3 +45,4 @@ for file_name in Unique_File_Name_Only:
         invalid_file_names = invalid_file_names + file_name_list
         print("invalid File Name: ", invalid_file_names)
         exit(1)
+
