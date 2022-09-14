@@ -1,19 +1,19 @@
-name: PR metadata annotation
+# name: PR metadata annotation
 
-on: 
-  pull_request:
-    types: [opened, reopened, synchronize]
+# on: 
+#   pull_request:
+#     types: [opened, reopened, synchronize]
 
-jobs:
+# jobs:
 
-  annotate-pr:
-    runs-on: ubuntu-latest
-    name: Annotates pull request with metadata
-    steps:
-      - name: Annotate PR
-        uses: smit-darji/PR-metadata-action@0.0.1
-        with:
-          owner: ${{ github.repository_owner }}
-          repo: ${{ github.event.repository.name }}
-          pr_number: ${{ github.event.number }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+#   annotate-pr:
+#     runs-on: ubuntu-latest
+#     name: Annotates pull request with metadata
+#     steps:
+#       - name: Annotate PR
+#         uses: smit-darji/PR-metadata-action@0.0.1
+#         with:
+#           owner: ${{ github.repository_owner }}
+#           repo: ${{ github.event.repository.name }}
+#           pr_number: ${{ github.event.number }}
+#           token: ${{ secrets.GITHUB_TOKEN }}
