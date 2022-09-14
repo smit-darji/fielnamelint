@@ -36,15 +36,15 @@ jobs:
             .github/workflows/script/file_name_validation.sh
           shell: bash
 
-  on-failure:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    name: Annotates pull request with metadata
-    steps:
-      - name: Annotate PR
-        uses: smit-darji/PR-metadata-action@0.0.1
-        with:
-          owner: ${{ github.repository_owner }}
-          repo: ${{ github.event.repository.name }}
-          pr_number: ${{ github.event.number }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+  # on-failure:
+  #   runs-on: ubuntu-latest
+  #   if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+  #   name: Annotates pull request with metadata
+  #   steps:
+  #     - name: Annotate PR
+  #       uses: smit-darji/PR-metadata-action@0.0.1
+  #       with:
+  #         owner: ${{ github.repository_owner }}
+  #         repo: ${{ github.event.repository.name }}
+  #         pr_number: ${{ github.event.number }}
+  #         token: ${{ secrets.GITHUB_TOKEN }}
