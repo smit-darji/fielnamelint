@@ -20,38 +20,38 @@ for i in "${!CHANGED_FILES_ARR[@]}"; do
 done
 echo $CHANGED_FILES_ARR
 
-# unique_file_names=()
+unique_file_names=()
 
-# for i in "${!CHANGED_FILES_ARR[@]}"; do
-#     # Extracting unique file names
-#     if [[ ! "${unique_file_names[*]}" =~ "${CHANGED_FILES_ARR[i]##*/}" && ! "${file_names_to_ignore[*]}" =~ "${CHANGED_FILES_ARR[i]##*/}" ]]; then
-#         unique_file_names+=(${CHANGED_FILES_ARR[i]##*/})
-#     fi
+for i in "${!CHANGED_FILES_ARR[@]}"; do
+    # Extracting unique file names
+    if [[ ! "${unique_file_names[*]}" =~ "${CHANGED_FILES_ARR[i]##*/}" && ! "${file_names_to_ignore[*]}" =~ "${CHANGED_FILES_ARR[i]##*/}" ]]; then
+        unique_file_names+=(${CHANGED_FILES_ARR[i]##*/})
+    fi
 
-# done
-# echo "Unique FIle list :"$unique_file_names
-# invalid_file_names=()
-# for file_name in "${unique_file_names[@]}"; do
-#     echo $file_name
-#     # Creating list of invalid file names
-#     if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
-#         invalid_file_names+=(${file_name})
-#     fi
-# done 
+done
+echo "Unique FIle list :"$unique_file_names
+invalid_file_names=()
+for file_name in "${unique_file_names[@]}"; do
+    echo $file_name
+    # Creating list of invalid file names
+    if [[ ! "${file_name}" =~ [0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$ ]]; then
+        invalid_file_names+=(${file_name})
+    fi
+done 
 
-# if [[ ! -z "$invalid_file_names" ]]; 
-#     then
-#         # Workflow is failed because there are some invalid file
-#         echo -e "\033[1mWorkflow Failed!!\033[0m\n"
-#         if [[ ! -z "$invalid_file_names" ]]; then
-#             # Print invalid File names
-#             echo -e "\033[2mInvalid File Names\033[0m"
-#             printf '%s\n' "${invalid_file_names[@]}"
-#         fi
-#         # Marking workflow as failed
-#         exit 1
-#     else
-#         echo -e "\033[1mWorkflow executed successfully!!\033[0m"
-#         # Marking workflow as successful
-#         exit 0
-# fi
+if [[ ! -z "$invalid_file_names" ]]; 
+    then
+        # Workflow is failed because there are some invalid file
+        echo -e "\033[1mWorkflow Failed!!\033[0m\n"
+        if [[ ! -z "$invalid_file_names" ]]; then
+            # Print invalid File names
+            echo -e "\033[2mInvalid File Names\033[0m"
+            printf '%s\n' "${invalid_file_names[@]}"
+        fi
+        # Marking workflow as failed
+        exit 1
+    else
+        echo -e "\033[1mWorkflow executed successfully!!\033[0m"
+        # Marking workflow as successful
+        exit 0
+fi
