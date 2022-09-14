@@ -1,7 +1,7 @@
 name: Run job if any dependency succeeds
 on:
   push:
-    branches: [ main ]
+    branches: [ Master ]
 jobs:
   dep1:
     runs-on: ubuntu-latest
