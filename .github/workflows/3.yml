@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run SUCCESS script
-        run: echo Success
+        run: exit 1
   job:
     runs-on: ubuntu-latest
-    if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
+    if: ${{ always() && contains(join(needs.*.result, ','), 'failure') }}
     needs: [dep1, dep2]
     steps:
       - name: Hello World        
