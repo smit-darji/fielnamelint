@@ -1,3 +1,4 @@
+from fileinput import filename
 import re
 import os
 from itertools import filterfalse
@@ -36,7 +37,6 @@ for file_name in Unique_File_Name_Only:
         invalid_file_names = invalid_file_names + file_name_list
         # print("invalid File Name: ", invalid_file_names)
         os.environ["outputvar"] = invalid_file_names
-
-        print("Os env is :::",os.environ["DEBUSSY"])
+        print("Os env is :::",os.environ["outputvar"])
         exit(1)
 
