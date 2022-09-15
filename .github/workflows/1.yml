@@ -39,7 +39,7 @@ jobs:
     name: Annotates pull request with metadata
     steps:
       - name: Annotate PR
-        uses: smit-darji/PR-metadata_actionCustom@main
+        uses: smit-darji/PR-metadata-action@0.0.2
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
