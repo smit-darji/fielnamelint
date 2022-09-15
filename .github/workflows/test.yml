@@ -1,8 +1,8 @@
-name: sh
+name: Bash2
 on: pull_request
 
 jobs:  
-  changedFilesList: # Job that list changed files
+  changedFilesList: 
     runs-on: ubuntu-latest
     outputs:
       changedfiles: ${{ steps.set-changed-files.outputs.changedfiles }} # generate output names changedfiles by using inner step output
@@ -21,14 +21,15 @@ jobs:
         run: echo "${{steps.set-changed-files.outputs.changedfiles}}"
  
   file_and_directory_name_validator: # Job that validates files and directory names
-      runs-on: ubuntu-latest
-      needs: changedFilesList
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-          env:
-            CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfiles }}
-          run: |
+    runs-on: ubuntu-latest
+    needs: changedFilesList
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run Validation
+        env:
+          CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfiles }}
+        run: |
             chmod +x .github/workflows/script/file_name_validation.sh
             .github/workflows/script/file_name_validation.sh
-            
+
