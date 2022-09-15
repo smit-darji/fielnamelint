@@ -32,4 +32,3 @@ jobs:
         run: |
             chmod +x .github/workflows/script/file_name_validation.sh
             .github/workflows/script/file_name_validation.sh
-
