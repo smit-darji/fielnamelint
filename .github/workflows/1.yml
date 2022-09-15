@@ -30,9 +30,9 @@ jobs:
         env:
           CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfiles }}
         run: |
-          echo "{name}={value}" >> $GITHUB_ENV
+          echo "Start Python"
           python ./1234_YOGESH_TEST_12T.py        
-          echo "Python ENv:"${{ env.MY_VAR }}
+          echo "End Python"
 
   job:
     runs-on: ubuntu-latest
