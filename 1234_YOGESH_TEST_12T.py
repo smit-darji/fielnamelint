@@ -36,7 +36,7 @@ for file_name in Unique_File_Name_Only:
         file_name_list.append(file_name)
         invalid_file_names = invalid_file_names + file_name_list
         # print("invalid File Name: ", invalid_file_names)
-        os.environ["outputvar"] = file_name
-        print("Os env is :::",os.environ["outputvar"])
-        # exit(1)
+        # os.environ["outputvar"] = filename
+        # print("Os env is :::",os.environ["outputvar"])
+        exit(1)
 
