@@ -25,6 +25,9 @@ for i in CHANGED_FILE_LIST:
         Unique_File_Name_Only=[]
         for i in unique_file_names:
             Unique_File_Name_Only.append(i.split('/')[-1])
+    else:
+        print("WorkFLow RUnn Successfully")
+        exit(1)
 invalid_file_names=[]
 file_name_list=[]
 for file_name in Unique_File_Name_Only:
