@@ -17,7 +17,7 @@ for i in CHANGED_FILE_LIST:
             REMOVE_DIR_NAME_LIST.append(i)
 CHANGED_FILE_LIST = [i for i in CHANGED_FILE_LIST if i not in REMOVE_DIR_NAME_LIST ]
 print("CHANGED FILE LIST is After Ignored Dir name:", str(CHANGED_FILE_LIST))
-print(type(CHANGED_FILE_LIST))
+
 unique_file_names=[]
 for i in CHANGED_FILE_LIST:
     if (i in CHANGED_FILE_LIST and CHANGED_FILE_LIST is not None):
@@ -25,6 +25,9 @@ for i in CHANGED_FILE_LIST:
         Unique_File_Name_Only=[]
         for i in unique_file_names:
             Unique_File_Name_Only.append(i.split('/')[-1])
+    else:
+        print("WorkFLow RUnn Successfully")
+        exit(1)
 invalid_file_names=[]
 file_name_list=[]
 for file_name in Unique_File_Name_Only:
