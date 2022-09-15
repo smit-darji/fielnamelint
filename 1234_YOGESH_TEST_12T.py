@@ -20,7 +20,7 @@ print("CHANGED FILE LIST is After Ignored Dir name:", str(CHANGED_FILE_LIST))
 
 unique_file_names=[]
 for i in CHANGED_FILE_LIST:
-    if (i in CHANGED_FILE_LIST and len(CHANGED_FILE_LIST)  == 0):
+    if (i in CHANGED_FILE_LIST and len(CHANGED_FILE_LIST)  != 0):
         unique_file_names = unique_file_names+CHANGED_FILE_LIST
         Unique_File_Name_Only=[]
         for i in unique_file_names:
@@ -30,7 +30,7 @@ for i in CHANGED_FILE_LIST:
         exit(1)
 invalid_file_names=[]
 file_name_list=[]
-if len(Unique_File_Name_Only) == 0:
+if len(Unique_File_Name_Only) != 0:
     for file_name in Unique_File_Name_Only:
         match = re.search("[0-9]{4}_[A-Z0-9_]*.[a-zA-Z]*$", file_name)
         if match:
