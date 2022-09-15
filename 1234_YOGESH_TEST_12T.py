@@ -38,5 +38,5 @@ for file_name in Unique_File_Name_Only:
         # print("invalid File Name: ", invalid_file_names)
         os.environ["outputvar"] = file_name
         print("Os env is :::",os.environ["outputvar"])
-        exit(1)
+        # exit(1)
 
