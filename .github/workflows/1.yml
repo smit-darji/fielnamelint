@@ -30,7 +30,8 @@ jobs:
         env:
           CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfiles }}
         run: |
-          python ./1234_YOGESH_TEST_12T.py        
+          python ./1234_YOGESH_TEST_12T.py       
+          echp "From python: "${{env.outputvar}} 
           
 
   job:
