@@ -46,4 +46,3 @@ jobs:
           pr_number: ${{ github.event.number }}
           token: ${{ secrets.GITHUB_TOKEN }}
           run : ${{env.outputvar}} 
-
