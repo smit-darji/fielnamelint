@@ -2,7 +2,7 @@ name: Bash
 on: pull_request
 
 jobs:  
-  changedFilesList: # Job that list changed files
+  changedFilesList: 
     runs-on: ubuntu-latest
     outputs:
       changedfiles: ${{ steps.set-changed-files.outputs.changedfiles }} # generate output names changedfiles by using inner step output
