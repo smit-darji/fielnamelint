@@ -30,9 +30,7 @@ jobs:
         env:
           CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfiles }}
         run: |
-          python ./1234_YOGESH_TEST_12T.py       
-          echo "From python: "${{"env.outputvar"]}}
-          
+          python ./1234_YOGESH_TEST_12T.py          
 
   job:
     runs-on: ubuntu-latest
