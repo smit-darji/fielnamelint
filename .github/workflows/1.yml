@@ -1,7 +1,6 @@
 name: Bash
 on: pull_request
 
-
 jobs:  
   changedFilesList: # Job that list changed files
     runs-on: ubuntu-latest
