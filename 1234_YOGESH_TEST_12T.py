@@ -35,8 +35,8 @@ for file_name in Unique_File_Name_Only:
     if match:
         print("valid Filename:",file_name)
     else:
-        print(file_name)
+        print("Invalid FIle is :",file_name)
         file_name_list.append(file_name)
         invalid_file_names = invalid_file_names + file_name_list
-        print("invalid File Name: ", invalid_file_names)
+        # print("invalid File Name: ", invalid_file_names)
         exit(1)
