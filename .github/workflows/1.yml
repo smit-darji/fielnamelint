@@ -31,7 +31,7 @@ jobs:
           CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfiles }}
         run: |
           python ./1234_YOGESH_TEST_12T.py 
-          echo os.environ.get('outputvar')         
+          echo os.environ.get{{'outputvar'}}         
 
   job:
     runs-on: ubuntu-latest
