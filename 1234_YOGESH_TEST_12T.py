@@ -36,3 +36,8 @@ for file_name in Unique_File_Name_Only:
         invalid_file_names = invalid_file_names + file_name_list
         # print("invalid File Name: ", invalid_file_names)
         exit(1)
+
+env_file = os.getenv('GITHUB_ENV')
+
+with open(env_file, "a") as myfile:
+    myfile.write("MY_VAR=MY_VALUE")
