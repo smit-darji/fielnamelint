@@ -31,7 +31,7 @@ jobs:
           CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfiles }}
         run: |
           python ./1234_YOGESH_TEST_12T.py       
-          echo "From python: "os.environ["outputvar"]
+          echo "From python: "os.environ{{env.outputvar}}
           
 
   job:
