@@ -44,10 +44,11 @@ jobs:
           repo: ${{ github.event.repository.name }}
           pr_number: ${{ github.event.number }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: python
       - uses: actions/setup-python@v2
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
             print(file_name)
+        run: echo "hi python"
