@@ -31,7 +31,6 @@ jobs:
           CHANGED_FILES: ${{ needs.changedFilesList.outputs.changedfiles }}
         run: |
           python ./1234_YOGESH_TEST_12T.py 
-
   job:
     runs-on: ubuntu-latest
     if: ${{ always() && contains(join(needs.*.result, ','), 'failure') }}
@@ -45,6 +44,7 @@ jobs:
           repo: ${{ github.event.repository.name }}
           pr_number: ${{ github.event.number }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: python
       - uses: actions/setup-python@v2
       - uses: jannekem/run-python-script-action@v1
